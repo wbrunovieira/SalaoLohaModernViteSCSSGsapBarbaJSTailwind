@@ -1,12 +1,10 @@
-// Definindo variáveis de cores
 $prymary-red: #ed3237;
-$cor-secundaria: #f76b8b;
-$cor-fundo: #f3f3f3;
-$cor-texto: #333333;
-
+$cor-fundo: #F5F5F5;
+$cor-texto: #323232;
+$cor-complementar: #B48E4D;
 
 body {
-    
+    background-color: $cor-fundo;
 }
 
 .screen-loading {
@@ -15,20 +13,40 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 1;
 
-    background-color: #555;
+    background-color: $cor-fundo;
 
+   
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
-    opacity: 0;
+    animation: background-change 3s ease-in forwards;
+   
 }
+
+@keyframes background-change {
+
+    0% {
+        background-color: $cor-fundo;
+    }
+    50% {
+        background-color: rgba($color: $prymary-red, $alpha: 0.1);
+    }
+    100% {
+
+        background-color: $cor-fundo;
+    }
+}
+
+
 
 .bar-loading {
     width: 500px;
     height: 6px;
-    background-color: rgba($color: #fff, $alpha: 0.2);
+    background-color: rgba($color: $prymary-red, $alpha: 0.2);
     border-radius: 10px;
     position: relative;
 
@@ -39,7 +57,7 @@ body {
         left: 0;
         width: 50%;
         height: 100%;
-        background-color: #fff;
+        background-color: rgba($color: $prymary-red, $alpha: 0.7);
         border-radius: 10px;
 
         animation: bar-loading 3s ease-in forwards;
@@ -57,3 +75,9 @@ body {
         width: 100%;
     }
 }
+
+.logo {
+        opacity: 0;
+        transform: scale(0);
+        /* Centralize o logo conforme necessário */
+    }
