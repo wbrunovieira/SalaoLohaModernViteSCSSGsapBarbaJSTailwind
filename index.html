@@ -6,7 +6,9 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <title>Home | Salão Loha</title>
 </head>
-<body class="wrapper">
+<body class="overflow-hidden">
+
+ <div class="wrapper">
 
     <nav class="bg-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
@@ -16,7 +18,11 @@
                 <!-- Logo e nome da empresa -->
                 <a href="#" class="flex items-center py-4 px-2">
                   <img src="/img/logo.png" alt="Logotipo Salão Loha" class=" mr-2">
-                  <span class="font-semibold text-gray-500 text-lg">Salão Loha</span>
+                  <div class="flex flex-col">
+                    <span class="font-semibold text-gray-500 text-lg">Salão Loha</span>
+                    <span class="font-semibold text-gray-500 text-lg">Estética e Beleza</span>
+                  </div>
+                  
                 </a>
               </div>
             </div>
@@ -35,15 +41,38 @@
 
     
 
-    <main data-barba="container" data-barba-namespace="home">
+    <main class="flex flex-row md:flex-row max-w-6xl mx-auto px-4 altura-ajustada" data-barba="container" data-barba-namespace="home">
 
-        <h1>Salão Loha Home</h1>
-        <section class="screen-loading">
-            <div class="bar-loading"></div>
-            <img class="logo mt-5" src="/img/logo.png" class="logo" />
-        </section>
+      <section class="screen-loading">
+        <div class="bar-loading"></div>
+        <img class="logo mt-5" src="/img/logo.png" class="logo" />
+      </section>
+
+     
+
+        <div class="flex-1 p-4">
+          <!-- Adicione seu texto e imagens aqui -->
+          <h2>Título</h2>
+          <p>Algum texto aqui.</p>
+          
+      </div>
+        <!-- Coluna da Imagem -->
+        <div class="coluna-imagem md:flex-1 p4">
+
+          <h1>imagem teste</h1>
+            <!-- A imagem de fundo será aplicada aqui -->
+        </div>
+
+        <!-- Coluna de Texto e Imagens -->
+      
+    </div>
+
+       
+       
 
     </main>
+
+</div>
     <!-- Script de Entrada do Vite -->
     <script type="module" src="/main.js"></script>
 </body>

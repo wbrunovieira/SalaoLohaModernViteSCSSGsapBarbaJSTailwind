@@ -6,6 +6,8 @@ import "./src/scss/tailwind.scss"
 // Importações de bibliotecas
 import barba from "@barba/core"
 import gsap from "gsap";
+
+document.addEventListener("DOMContentLoaded", main);
 function hideLoadingScreen() {
     const loadingScreen = document.querySelector(".screen-loading");
     if (loadingScreen) {
@@ -27,10 +29,33 @@ function hideLoadingScreen() {
 // Inicializações de Barba.js e GSAP
 function initBarba() {
 	barba.init({
-		// Configurações do Barba.js
-		// Aqui você pode adicionar transições, views, etc.
-	});
-
+		views: [
+		  {
+			namespace: 'home',
+			beforeEnter(data) {
+			  // Atualize a navegação ou qualquer outra coisa que você precisa fazer quando entra nesta visualização
+			},
+			afterEnter(data) {
+			  // Atualizações após a entrada completa na nova página
+			}
+		  }
+		  // ... outras visualizações para outras páginas
+		],
+		transitions: [
+		  {
+			name: 'fade',
+			once(data) {
+			  // Uma transição inicial quando o site é carregado pela primeira vez
+			},
+			leave(data) {
+			  // Uma transição para a página que está saindo
+			},
+			enter(data) {
+			  // Uma transição para a página que está entrando
+			}
+		  }
+		]
+	  });
 	
 	
 	// Aqui você pode configurar animações específicas do Barba.js com GSAP
@@ -54,6 +79,3 @@ function main() {
 	// Por exemplo, inicializar componentes, manipular eventos, etc.
 }
 
-// Carrega tudo quando o DOM estiver pronto
-document.addEventListener("DOMContentLoaded", main);
-// Função para esconder a tela de carregamento

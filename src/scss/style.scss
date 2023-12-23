@@ -81,3 +81,12 @@ body {
         transform: scale(0);
         /* Centralize o logo conforme necessário */
     }
+
+    .altura-ajustada {
+        height: calc(100vh - 100px);
+    }
+    .coluna-imagem {
+        background-image: url('/img/bg-intro.jpg'); /* Substitua pelo caminho da sua imagem */
+        background-size: cover;
+        background-position: center;
+    }
