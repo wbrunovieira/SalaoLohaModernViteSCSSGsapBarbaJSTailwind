@@ -1,25 +1,102 @@
 // Importação dos estilos SCSS
+
 import "./src/scss/reset.scss";
 import "./src/scss/style.scss";
 import "./src/scss/tailwind.scss" 
 
 // Importações de bibliotecas
 import barba from "@barba/core"
+
 import gsap from "gsap";
 
+
 document.addEventListener("DOMContentLoaded", main);
-function hideLoadingScreen() {
-    const loadingScreen = document.querySelector(".screen-loading");
-    if (loadingScreen) {
-        gsap.to(loadingScreen, {
+
+function showPageContent() {
+    // Aqui você altera o estilo da página de fundo para torná-la visível
+    const pageContent = document.querySelector('.index'); // Substitua pela classe correta
+    gsap.to(pageContent, {
+        duration: 1,
+        opacity: 1,
+        display: 'block'
+    });
+}
+
+barba.init({
+	transitions: [{
+	// 	name: "entrada transition",
+	// },
+	// {
+	// 	name: "meio transition",
+	// },
+	// {
+	 	name: "saida transition",
+		sync: true,
+		once() {
+
+			gsap.to(".logo", {
+				duration: 3, 
+				opacity: 1,
+				scale: 1, 
+				ease: "bounce.out", 
+				onComplete: showPageContent
+			});
+		
+			
+			gsap.to(".screen-loading", {
+					duration: 3,
+					opacity: 1,
+					display: 'none',
+					
+				});
+		
+				gsap.to('.bar-loading', {
+					duration: 3,
+					'--bar-width': '100%' /* Anima a variável CSS */
+				});
+				
+			console.log("uma vez na página")
+		},
+		before(){
+			console.log("Antes na página")
+		},
+		after(){
+			console.log("Saindo da página")
+		},
+		beforeEnter() {
+			console.log("before enter na página")
+		},
+
+		enter() {
+			console.log("Entrando na página")
+		}
+	 }
+]
+})
+
+function LoadingScreen() {
+	
+	gsap.to(".logo", {
+		duration: 3, 
+		opacity: 1,
+		scale: 1, 
+		ease: "bounce.out", // escolha um efeito de easing suave
+	});
+
+	
+     gsap.to(loadingScreen, {
             duration: 1,
             opacity: 0,
             display: 'none',
-            onComplete: () => {
-                loadingScreen.style.display = 'none';
-            }
+            
         });
-    }
+
+		gsap.to(".bar-loading", {
+			duration: 3, 
+			width: '100%', // Completa a barra
+			// Chama a função para esconder a tela de carregamento
+		});
+    
 }
 
 
@@ -28,34 +105,7 @@ function hideLoadingScreen() {
 
 // Inicializações de Barba.js e GSAP
 function initBarba() {
-	barba.init({
-		views: [
-		  {
-			namespace: 'home',
-			beforeEnter(data) {
-			  // Atualize a navegação ou qualquer outra coisa que você precisa fazer quando entra nesta visualização
-			},
-			afterEnter(data) {
-			  // Atualizações após a entrada completa na nova página
-			}
-		  }
-		  // ... outras visualizações para outras páginas
-		],
-		transitions: [
-		  {
-			name: 'fade',
-			once(data) {
-			  // Uma transição inicial quando o site é carregado pela primeira vez
-			},
-			leave(data) {
-			  // Uma transição para a página que está saindo
-			},
-			enter(data) {
-			  // Uma transição para a página que está entrando
-			}
-		  }
-		]
-	  });
+	
 	
 	
 	// Aqui você pode configurar animações específicas do Barba.js com GSAP
@@ -64,14 +114,9 @@ function initBarba() {
 // Função de inicialização principal
 function main() {
 
-	setTimeout(hideLoadingScreen, 3000);
+	
 
-	gsap.to(".logo", {
-		duration: 3, 
-		opacity: 1,
-		scale: 1, 
-		ease: "bounce.out", // escolha um efeito de easing suave
-	});
+
 
 	initBarba();
 

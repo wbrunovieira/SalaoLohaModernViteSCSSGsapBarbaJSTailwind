@@ -7,8 +7,11 @@
     <title>Home | Salão Loha</title>
 </head>
 <body class="overflow-hidden">
-
- <div class="wrapper">
+  <section class="screen-loading">
+    <div class="bar-loading"></div>
+    <img class="logo mt-5" src="/img/logo.png" class="logo" />
+  </section>
+ <div class="index" data-barba="wrapper">
 
     <nav class="bg-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
@@ -28,8 +31,8 @@
             </div>
             <!-- Menu à direita -->
             <div class="hidden md:flex items-center space-x-1">
-              <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-cor-primaria duration-300">Início</a>
-              <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-300">Serviços</a>
+              <a href="index.html" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-cor-primaria duration-300">Início</a>
+              <a href="servicos.html" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-300">Serviços</a>
               <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-300">Destaque</a>
               <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-300">Portfólio</a>
               <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-300">Contato</a>
@@ -41,12 +44,9 @@
 
     
 
-    <main class="flex flex-row md:flex-row max-w-6xl mx-auto px-4 altura-ajustada" data-barba="container" data-barba-namespace="home">
+  <main data-barba="container" data-barba-namespace="home" class="flex flex-row md:flex-row max-w-6xl mx-auto px-4 altura-ajustada" >
 
-      <section class="screen-loading">
-        <div class="bar-loading"></div>
-        <img class="logo mt-5" src="/img/logo.png" class="logo" />
-      </section>
+    
 
      
 
@@ -64,13 +64,13 @@
         </div>
 
         <!-- Coluna de Texto e Imagens -->
-      
+      </main>   
     </div>
 
        
        
 
-    </main>
+   
 
 </div>
     <!-- Script de Entrada do Vite -->
