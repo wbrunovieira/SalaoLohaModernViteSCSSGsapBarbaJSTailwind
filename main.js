@@ -12,14 +12,31 @@ import gsap from "gsap";
 
 document.addEventListener("DOMContentLoaded", main);
 
+
+
 function showPageContent() {
-    // Aqui você altera o estilo da página de fundo para torná-la visível
-    const pageContent = document.querySelector('.index'); // Substitua pela classe correta
+   
+    const pageContent = document.querySelector('.index'); 
     gsap.to(pageContent, {
         duration: 1,
         opacity: 1,
         display: 'block'
     });
+
+	var path = document.querySelector("#borda-hero");
+	if (path) {
+		var length = path.getTotalLength();
+		// Resto do código...
+	}
+		
+			path.style.strokeDasharray = length;
+			path.style.strokeDashoffset = length;
+
+			gsap.to(path.style, {
+				strokeDashoffset: 0,
+				duration: 2, 
+				ease: "back.inOut",
+			});
 }
 
 barba.init({
@@ -68,6 +85,7 @@ barba.init({
 		},
 
 		enter() {
+			
 			console.log("Entrando na página")
 		}
 	 }
