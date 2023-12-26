@@ -8,6 +8,9 @@ import "./src/scss/tailwind.scss"
 import barba from "@barba/core"
 
 import gsap from "gsap";
+import { TextPlugin } from 'gsap/TextPlugin';
+gsap.registerPlugin(TextPlugin);
+
 
 
 document.addEventListener("DOMContentLoaded", main);
@@ -26,7 +29,7 @@ function showPageContent() {
 	var path = document.querySelector("#borda-hero");
 	if (path) {
 		var length = path.getTotalLength();
-		// Resto do código...
+		
 	}
 		
 			path.style.strokeDasharray = length;
@@ -37,7 +40,19 @@ function showPageContent() {
 				duration: 2, 
 				ease: "back.inOut",
 			});
+
+			let tl = gsap.timeline({delay: 1});
+
+			tl.to ("#text1", {text: "Atendimento personalizado ",ease: "power1.in" , duration: 1})
+			tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
+			
+			tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
+			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
+
+	
 }
+
+
 
 barba.init({
 	transitions: [{
