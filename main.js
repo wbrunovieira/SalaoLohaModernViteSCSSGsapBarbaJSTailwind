@@ -48,7 +48,31 @@ function showPageContent() {
 			
 			tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
 			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
+			tl.to(".imagem-reveal", {
+				clipPath: 'inset(0 0 0 0)',
+				duration: 2, 
+				ease: 'elastic.out(1,0.3)', 
+				scrollTrigger: {
+					trigger: '.imagem-reveal',
+					start: 'top bottom',  
+				}}, "-=7")
 
+			const botao = document.querySelector('#agendar');
+
+			botao.addEventListener('mouseenter', () => {
+				gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
+			  });
+			  
+			  // Animação de saída do hover
+			  botao.addEventListener('mouseleave', () => {
+				gsap.to(botao, { scale: 1, backgroundColor: "transparent", color: "#ed3237", duration: 0.3 });
+			  });
+
+			 gsap.to('.imagem-reveal', {
+				
+				
+			});
+			
 	
 }
 
@@ -105,7 +129,10 @@ barba.init({
 			console.log("Entrando na página")
 		}
 	 }
+
+	 
 ]
+
 })
 
 function LoadingScreen() {

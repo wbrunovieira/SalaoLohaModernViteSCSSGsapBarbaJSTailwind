@@ -101,3 +101,9 @@ body {
         background-size: cover;
         background-position: center;
     }
+
+
+.imagem-reveal {
+    clip-path: inset(0 0 100% 0); /* Oculta a imagem inicialmente */
+    transition: clip-path 2s ease-out; /* Transição suave */
+}
