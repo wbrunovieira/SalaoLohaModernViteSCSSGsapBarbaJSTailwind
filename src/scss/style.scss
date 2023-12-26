@@ -134,4 +134,22 @@ body {
     z-index: 1000; /* Certifique-se de que a sombra está sob o modelo e sobre o conteúdo da página */
 }
 
+ul.transition {
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+ul.transition li {
+    transform: scaleY(0);
+    background: white;
+    width: 20%;
+}
+
 

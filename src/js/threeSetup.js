@@ -6,6 +6,8 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { DragControls } from 'three/examples/jsm/controls/DragControls.js';
 
 
+
+
 let scene, camera, renderer, model, controls;
 
 
@@ -66,7 +68,7 @@ export function initializeThreeJS() {
     });
 
     let isDragging = false;
-    
+
 let previousMousePosition = {
     x: 0,
     y: 0
