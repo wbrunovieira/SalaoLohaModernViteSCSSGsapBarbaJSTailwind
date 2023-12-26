@@ -9,6 +9,7 @@ body {
 
 .index {
     opacity: 0;
+    position: relative;
 }
 
 .screen-loading {
@@ -97,7 +98,7 @@ body {
         height: calc(100vh - 100px);
     }
     .coluna-imagem {
-        background-image: url('/img/bg-intro.jpg'); /* Substitua pelo caminho da sua imagem */
+        background-image: url('/img/bg-intro.jpg'); 
         background-size: cover;
         background-position: center;
     }
@@ -107,3 +108,30 @@ body {
     clip-path: inset(0 0 100% 0); /* Oculta a imagem inicialmente */
     transition: clip-path 2s ease-out; /* Transição suave */
 }
+
+#model-container {
+    position: absolute; 
+    width: 100%;
+    height: 100vh;
+   
+    z-index: 800;
+
+    canvas {
+        display: block;
+    }
+}
+
+#sombra-falsa {
+    width: 100px; /* Ajuste para o tamanho do seu modelo */
+    height: 100px; /* Ajuste para o tamanho do seu modelo */
+    border-radius: 50%; /* Se o seu modelo for aproximadamente circular */
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 800px; /* Ajuste a posição para corresponder à posição do seu modelo */
+    left: -300px; /* Ajuste a posição para corresponder à posição do seu modelo */
+    transform: translateX(-50%) translateY(-50%) scale(0.5); /* Ajuste para o tamanho do seu modelo */
+    filter: blur(10px); /* Suaviza a sombra */
+    z-index: 1000; /* Certifique-se de que a sombra está sob o modelo e sobre o conteúdo da página */
+}
+
+

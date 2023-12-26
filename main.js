@@ -4,6 +4,9 @@ import "./src/scss/reset.scss";
 import "./src/scss/style.scss";
 import "./src/scss/tailwind.scss" 
 
+import { initializeThreeJS, animateThreeJS } from '/src/js/threeSetup.js';
+
+
 // Importações de bibliotecas
 import barba from "@barba/core"
 
@@ -15,9 +18,13 @@ gsap.registerPlugin(TextPlugin);
 
 document.addEventListener("DOMContentLoaded", main);
 
-
+initializeThreeJS()
+animateThreeJS()
 
 function showPageContent() {
+
+
+
    
     const pageContent = document.querySelector('.index'); 
     gsap.to(pageContent, {
@@ -52,10 +59,8 @@ function showPageContent() {
 				clipPath: 'inset(0 0 0 0)',
 				duration: 2, 
 				ease: 'elastic.out(1,0.3)', 
-				scrollTrigger: {
-					trigger: '.imagem-reveal',
-					start: 'top bottom',  
-				}}, "-=7")
+				
+			}, "-=7")
 
 			const botao = document.querySelector('#agendar');
 
