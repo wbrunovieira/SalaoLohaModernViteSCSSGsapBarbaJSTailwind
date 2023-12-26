@@ -65,6 +65,7 @@ barba.init({
 					opacity: 1,
 					display: 'none',
 					
+					
 				});
 		
 				gsap.to('.bar-loading', {

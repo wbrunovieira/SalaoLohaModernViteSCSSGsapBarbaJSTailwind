@@ -27,14 +27,20 @@ body {
     align-items: center;
     flex-direction: column;
 
+    pointer-events: none;
+    
+
     animation: background-change 3s ease-in forwards;
    
 }
+
+
 
 @keyframes background-change {
 
     0% {
         background-color: $cor-fundo;
+        opacity: 0;
     }
     50% {
         background-color: rgba($color: $prymary-red, $alpha: 0.1);

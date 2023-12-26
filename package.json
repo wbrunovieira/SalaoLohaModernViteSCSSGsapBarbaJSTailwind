@@ -9,9 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    
+    "daisyui": "^4.4.24",
     "vite": "^5.0.8"
-    
   },
   "dependencies": {
     "@barba/core": "^2.9.7",

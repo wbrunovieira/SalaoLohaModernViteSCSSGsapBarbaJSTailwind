@@ -17,6 +17,20 @@ export default {
     },
   },
   
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        meuTema: {                          
+          'cor-primaria': '#ed3237',
+          'cor-fundo' : '#F5F5F5',
+          'cor-texto' : '#323232',
+          'cor-complementar' : '#B48E4D',           
+        },
+      },
+    ],
+  },
+
 };
 
 
