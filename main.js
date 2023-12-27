@@ -76,7 +76,10 @@ import "./src/scss/tailwind.scss";
 
 // let isDragging = false;
 
-// let previousMousePosition = {
+// let previous
+
+
+// Position = {
 //     x: 0,
 //     y: 0
 // };
@@ -124,30 +127,38 @@ import "./src/scss/tailwind.scss";
 
 function showPageContent() {
 
-
-
-   
+  
     const pageContent = document.querySelector('.index'); 
-    gsap.to(pageContent, {
-        duration: 4,
-        opacity: 1,
-        display: 'block'
-    });
 
-	var path = document.querySelector("#borda-hero");
-	if (path) {
-		var length = path.getTotalLength();
-		
-	}
-		
-			path.style.strokeDasharray = length;
-			path.style.strokeDashoffset = length;
+     gsap.to(pageContent, {
+         duration: 4,
+         opacity: 1,
+          display: 'block'
+     });
 
-			gsap.to(path.style, {
-				strokeDashoffset: 0,
-				duration: 2, 
-				ease: "back.inOut",
-			});
+	 var path = document.querySelector("#borda-hero");
+	 if (path) {
+	 	var length = path.getTotalLength();
+		
+	 }
+		
+	path.style.strokeDasharray = length;
+	path.style.strokeDashoffset = length;
+
+	gsap.to(path.style, {
+	 		strokeDashoffset: 0,
+			duration: 2, 
+			ease: "back.inOut",
+	 		});
+
+	// Função para lidar com o evento de clique
+function handleMouseClick(event) {
+	console.log('Elemento clicado:', event.target);
+	console.log('Coordenadas do clique: X=', event.clientX, ' Y=', event.clientY);
+  }
+  
+  // Adiciona o evento de clique ao documento inteiro para testes
+  document.addEventListener('click', handleMouseClick);
 
 			let tl = gsap.timeline({delay: 1});
 
@@ -163,21 +174,18 @@ function showPageContent() {
 				
 			}, "-=7")
 
-			const botao = document.querySelector('#agendar');
+			 const botao = document.querySelector('#agendar');
 
-			botao.addEventListener('mouseenter', () => {
-				gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
-			  });
+			 botao.addEventListener('mouseenter', () => {
+			 	gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
+			   });
 			  
-			  // Animação de saída do hover
-			  botao.addEventListener('mouseleave', () => {
-				gsap.to(botao, { scale: 1, backgroundColor: "transparent", color: "#ed3237", duration: 0.3 });
-			  });
+			   // Animação de saída do hover
+			   botao.addEventListener('mouseleave', () => {
+			 	gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
+			   });
 
-			 gsap.to('.imagem-reveal', {
-				
-				
-			});
+			
 			
 	
 }
@@ -214,18 +222,18 @@ function main() {
     // animateThreeJS();
     showPageContent();
 
-    // Inicialização do Barba.js e GSAP
-    barba.init({
+    //Inicialização do Barba.js e GSAP
+     barba.init({
 
-		sync: true,
+	 	sync: true,
 
-		async once() {
+	 	async once() {
 
-			Loading();
-		}
+	 		Loading();
+	 	}
 
-        // Configurações do Barba.js
-    });
+         // Configurações do Barba.js
+     });
 
     // Outros códigos de inicialização
 }

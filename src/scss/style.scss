@@ -80,19 +80,12 @@ body {
     
 }
 
-// @keyframes bar-loading {
-//     0% {
-//         width: 0;
-//     }
-//     100% {
-//         width: 100%;
-//     }
-// }
+
 
 .logo {
         opacity: 0;
         transform: scale(0);
-        /* Centralize o logo conforme necessário */
+       
     }
 
     .altura-ajustada {
@@ -110,17 +103,17 @@ body {
     transition: clip-path 2s ease-out; /* Transição suave */
 }
 
-#model-container {
-    position: absolute; 
-    width: 100%;
-    height: 100vh;
+// #model-container {
+//     // position: absolute; 
+//     width: 100%;
+//     height: 100vh;
    
-    z-index: 800;
+//     z-index: 800;
 
-    canvas {
-        display: block;
-    }
-}
+//     canvas {
+//         display: block;
+//     }
+// }
 
 #sombra-falsa {
     width: 100px; /* Ajuste para o tamanho do seu modelo */
