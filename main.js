@@ -12,109 +12,115 @@ import "./src/scss/style.scss";
 import "./src/scss/tailwind.scss";
 
 // Variáveis Globais
-let scene, camera, renderer, model, controls;
+// let scene, camera, renderer, model, controls;
 
 
-function initializeThreeJS() {
+// function initializeThreeJS() {
     
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+//     scene = new THREE.Scene();
+//     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+//     camera.position.z = 5;
 
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+//     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+//     renderer.setSize(window.innerWidth, window.innerHeight);
    
-    document.getElementById('model-container').appendChild(renderer.domElement);
+//     document.getElementById('model-container').appendChild(renderer.domElement);
 
-    // Luzes
-    const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
-    scene.add(ambientLight);
+//     // Luzes
+//     const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+//     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(1, 1, 1).normalize();
+//     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+//     directionalLight.position.set(1, 1, 1).normalize();
    
-    scene.add(directionalLight);
+//     scene.add(directionalLight);
 
-    // Carregar Modelo 3D
-    const loader = new GLTFLoader();
-    const dracoLoader = new DRACOLoader();
+//     // Carregar Modelo 3D
+//     const loader = new GLTFLoader();
+//     const dracoLoader = new DRACOLoader();
 
-    dracoLoader.setDecoderPath('../../node_modules/three/examples/jsm/libs/draco/')
+//     dracoLoader.setDecoderPath('../../node_modules/three/examples/jsm/libs/draco/')
 
 
-    loader.setDRACOLoader(dracoLoader);
+//     loader.setDRACOLoader(dracoLoader);
 
-	const group = new THREE.Group();
+// 	const group = new THREE.Group();
 
-    loader.load('models/Hairdryer.glb', (gltf) => {
-		model = gltf.scene;
-		model.scale.set(0.5, 0.5, 0.5);
-		model.position.set(0, -1.5, 0);
+//     loader.load('models/Hairdryer.glb', (gltf) => {
+// 		model = gltf.scene;
+// 		model.scale.set(0.5, 0.5, 0.5);
+// 		model.position.set(0, -1.5, 0);
 		
-		group.add(model);  // Adicionando o modelo ao grupo
-		scene.add(group);
+// 		group.add(model);  // Adicionando o modelo ao grupo
+// 		scene.add(group);
 
-		const dragControls = new DragControls([group], camera, renderer.domElement);
+// 		const dragControls = new DragControls([group], camera, renderer.domElement);
 
 
-		dragControls.addEventListener('dragstart', function (event) {
-			controls.enabled = false; // Desativa os OrbitControls enquanto arrasta
-		});
+// 		dragControls.addEventListener('dragstart', function (event) {
+// 			controls.enabled = false; // Desativa os OrbitControls enquanto arrasta
+// 		});
 		
-		dragControls.addEventListener('dragend', function (event) {
-			controls.enabled = true; // Reativa os OrbitControls após arrastar
-		});
+// 		dragControls.addEventListener('dragend', function (event) {
+// 			controls.enabled = true; // Reativa os OrbitControls após arrastar
+// 		});
 	
         
-    });
+//     });
 
-    // Controles
-    controls = new OrbitControls(camera, renderer.domElement);
+//     // Controles
+//     controls = new OrbitControls(camera, renderer.domElement);
 
-}
-let isDragging = false;
+// }
 
-let previousMousePosition = {
-    x: 0,
-    y: 0
-};
+// let isDragging = false;
 
-document.addEventListener('mousedown', (e) => {
-    isDragging = true;
-});
+// let previousMousePosition = {
+//     x: 0,
+//     y: 0
+// };
 
-document.addEventListener('mousemove', (e) => {
-  
-    if (isDragging) {
-        // Aqui você pode implementar uma lógica de arrasto, se necessário
-        // Mas por enquanto, vamos deixar vazio para testar
-    }
- 
-});
+// document.addEventListener('mousedown', (e) => {
+//     isDragging = true;
+// });
+// document.addEventListener('mousemove', (e) => {
+//     if (isDragging) {
+//         var deltaMove = {
+//             x: e.offsetX - previousMousePosition.x,
+//             y: e.offsetY - previousMousePosition.y
+//         };
 
-document.addEventListener('mouseup', (e) => {
-    isDragging = false;
-});
+       
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
+//         previousMousePosition.x = e.offsetX;
+//         previousMousePosition.y = e.offsetY;
+//     }
+// });
 
 
-function animateThreeJS() {
+// document.addEventListener('mouseup', (e) => {
+//     isDragging = false;
+// });
 
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-        controls.update();
-    }
+// function onWindowResize() {
+//     camera.aspect = window.innerWidth / window.innerHeight;
+//     camera.updateProjectionMatrix();
+//     renderer.setSize(window.innerWidth, window.innerHeight);
+// }
 
-    animate();
+
+// function animateThreeJS() {
+
+//     function animate() {
+//         requestAnimationFrame(animate);
+//         renderer.render(scene, camera);
+//         controls.update();
+//     }
+
+//     animate();
    
-}
+// }
 
 function showPageContent() {
 
@@ -204,8 +210,8 @@ function Loading() {
 function main() {
     // Função principal
     gsap.registerPlugin(TextPlugin);
-    initializeThreeJS();
-    animateThreeJS();
+    // initializeThreeJS();
+    // animateThreeJS();
     showPageContent();
 
     // Inicialização do Barba.js e GSAP

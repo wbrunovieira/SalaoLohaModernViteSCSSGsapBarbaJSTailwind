@@ -14,6 +14,9 @@ export default {
         'cor-texto' : '#323232',
         'cor-complementar' : '#B48E4D',
       },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   
