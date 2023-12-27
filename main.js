@@ -124,6 +124,29 @@ import "./src/scss/tailwind.scss";
 //     animate();
    
 // }
+function circleTransition() {
+    return gsap.timeline({ paused: true })
+        .to("#transition-circle", {
+            duration: 0.5,
+            scale: 1,
+            ease: "power1.inOut"
+        })
+        .to("#transition-circle", {
+            duration: 0.5,
+            scale: 0,
+            ease: "power1.inOut",
+            clearProps: "all" // Limpa os estilos após a animação
+        });
+}
+
+const transition = circleTransition();
+function fadeIn(content) {
+	gsap.to(content, { duration: 1, visibility: 'visible', opacity: 1 });
+  }
+  
+function fadeOut(content) {
+	return gsap.to(content, { duration: 1, visibility: 'hidden', opacity: 0 });
+  }
 
 function updateActiveLink(namespace) {
     // Primeiro, remova a classe ativa e a animação de todos os links
@@ -211,42 +234,22 @@ function showPageContentServicos() {
   
     const pageContent = document.querySelector('.index'); 
 
-     gsap.to(pageContent, {
-         duration: 4,
-         opacity: 1,
-          display: 'block'
-     });
+	gsap.to(pageContent, {
+		duration: 4,
+		opacity: 1,
+		display: 'block',
+		// Certifique-se de que a string do SVG esteja corretamente formatada e escape as aspas duplas
+		backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'46\' height=\'46\' viewBox=\'0 0 200 200\'%3E%3Cdefs%3E%3ClinearGradient id=\'a\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'33\' x2=\'100\' y2=\'-3\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'b\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'135\' x2=\'100\' y2=\'97\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill=\'%23c5c5c5\' fill-opacity=\'0.02\'%3E%3Crect x=\'100\' width=\'100\' height=\'100\'/%3E%3Crect y=\'100\' width=\'100\' height=\'100\'/%3E%3C/g%3E%3Cg fill-opacity=\'0.02\'%3E%3Cpolygon fill=\'url(%23a)\' points=\'100 30 0 0 200 0\'/%3E%3Cpolygon fill=\'url(%23b)\' points=\'100 100 0 130 0 100 200 100 200 130\'/%3E%3C/g%3E%3C/svg%3E")'
+	});
+
+
 
 	
 
 
   
 
-			let tl = gsap.timeline({delay: 1});
-
-			tl.to ("#text1", {text: "Servico ",ease: "power1.in" , duration: 1})
-			tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
 			
-			tl.to ("#text4", {text: "Servico ",ease: "power1.in" , duration: 1})
-			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
-			tl.to(".imagem-reveal", {
-				clipPath: 'inset(0 0 0 0)',
-				duration: 2, 
-				ease: 'elastic.out(1,0.3)', 
-				
-			}, "-=7")
-
-			 const botao = document.querySelector('#agendar');
-
-			 botao.addEventListener('mouseenter', () => {
-			 	gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
-			   });
-			  
-			   // Animação de saída do hover
-			   botao.addEventListener('mouseleave', () => {
-			 	gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
-			   });
-
 			
 			
 	
@@ -302,15 +305,32 @@ function main() {
 		  }
 		],
 		transitions: [{
-		  leave(data) {
+			sync: true,
+		 async leave(data) {
 			// Animação de saída
-			return gsap.to(data.current.container, {
-			  opacity: 0
-			});
+            return new Promise(resolve => {
+                gsap.to(data.current.container, {
+                    duration: 1,
+                    opacity: 0,
+                    onComplete: resolve
+                });
+                transition.play();
+            });
+
 		  },
-		  enter(data) {
+		 async enter(data) {
+			gsap.from(data.next.container, {
+                duration: 1,
+                opacity: 0,
+                onComplete: () => transition.reverse()
+            });
             updateActiveLink(data.next.namespace);
-        	}
+        	},
+			
+
+			once(data) {
+				fadeIn(data.next.container);
+			}
 		}]
 	  });
 	  
@@ -330,9 +350,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", main);
-
-
-
-
-		
 
