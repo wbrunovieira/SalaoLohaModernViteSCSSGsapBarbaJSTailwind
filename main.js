@@ -125,7 +125,7 @@ import "./src/scss/tailwind.scss";
    
 // }
 
-function showPageContent() {
+function showPageContentHome() {
 
   
     const pageContent = document.querySelector('.index'); 
@@ -151,14 +151,7 @@ function showPageContent() {
 			ease: "back.inOut",
 	 		});
 
-	// Função para lidar com o evento de clique
-function handleMouseClick(event) {
-	console.log('Elemento clicado:', event.target);
-	console.log('Coordenadas do clique: X=', event.clientX, ' Y=', event.clientY);
-  }
   
-  // Adiciona o evento de clique ao documento inteiro para testes
-  document.addEventListener('click', handleMouseClick);
 
 			let tl = gsap.timeline({delay: 1});
 
@@ -166,6 +159,53 @@ function handleMouseClick(event) {
 			tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
 			
 			tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
+			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
+			tl.to(".imagem-reveal", {
+				clipPath: 'inset(0 0 0 0)',
+				duration: 2, 
+				ease: 'elastic.out(1,0.3)', 
+				
+			}, "-=7")
+
+			 const botao = document.querySelector('#agendar');
+
+			 botao.addEventListener('mouseenter', () => {
+			 	gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
+			   });
+			  
+			   // Animação de saída do hover
+			   botao.addEventListener('mouseleave', () => {
+			 	gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
+			   });
+
+			
+			
+	
+}
+
+
+function showPageContentServicos() {
+
+  
+    const pageContent = document.querySelector('.index'); 
+
+     gsap.to(pageContent, {
+         duration: 4,
+         opacity: 1,
+          display: 'block'
+     });
+
+	
+
+
+  
+
+			let tl = gsap.timeline({delay: 1});
+
+			tl.to ("#text1", {text: "Servico ",ease: "power1.in" , duration: 1})
+			tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
+			
+			tl.to ("#text4", {text: "Servico ",ease: "power1.in" , duration: 1})
 			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
 			tl.to(".imagem-reveal", {
 				clipPath: 'inset(0 0 0 0)',
@@ -220,22 +260,43 @@ function main() {
     gsap.registerPlugin(TextPlugin);
     // initializeThreeJS();
     // animateThreeJS();
-    showPageContent();
+   
 
-    //Inicialização do Barba.js e GSAP
-     barba.init({
+	barba.init({
+		views: [
+		  {
+			namespace: 'home',
+			beforeEnter() {
+			  // Código específico para a página inicial
+			  showPageContentHome();
+			}
+		  },
+		  {
+			namespace: 'servicos',
+			beforeEnter() {
+			  // Código específico para a página de serviços
+			  showPageContentServicos();
+			}
+		  }
+		],
+		transitions: [{
+		  leave(data) {
+			// Animação de saída
+			return gsap.to(data.current.container, {
+			  opacity: 0
+			});
+		  },
+		  enter(data) {
+			// Animação de entrada
+			return gsap.from(data.next.container, {
+			  opacity: 0
+			});
+		  }
+		}]
+	  });
+	  
 
-	 	sync: true,
 
-	 	async once() {
-
-	 		Loading();
-	 	}
-
-         // Configurações do Barba.js
-     });
-
-    // Outros códigos de inicialização
 }
 
 document.addEventListener("DOMContentLoaded", main);
