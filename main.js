@@ -125,6 +125,28 @@ import "./src/scss/tailwind.scss";
    
 // }
 
+function updateActiveLink(namespace) {
+    // Primeiro, remova a classe ativa e a animação de todos os links
+    gsap.to('.link-ativo', { borderColor: 'transparent', duration: 0.3 });
+    document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('link-ativo');
+    });
+
+    // Em seguida, adicione a classe ativa e anime o novo link ativo
+    let selector;
+    if (namespace === 'servicos') {
+        selector = 'a[href*="servicos.html"]';
+    } else if (namespace === 'home') {
+        selector = 'a[href*="index.html"]';
+    }
+
+    const activeLink = document.querySelector(selector);
+    if (activeLink) {
+        activeLink.classList.add('link-ativo');
+        gsap.to(activeLink, { borderColor: 'red', duration: 0.3 });
+    }
+}
+
 function showPageContentHome() {
 
   
@@ -287,17 +309,25 @@ function main() {
 			});
 		  },
 		  enter(data) {
-			// Animação de entrada
-			return gsap.from(data.next.container, {
-			  opacity: 0
-			});
-		  }
+            updateActiveLink(data.next.namespace);
+        	}
 		}]
 	  });
 	  
 
 
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const path = window.location.pathname;
+    let namespace = 'home'; // valor padrão
+
+    if (path.includes('servicos.html')) {
+        namespace = 'servicos';
+    }
+
+    updateActiveLink(namespace);
+});
+
 
 document.addEventListener("DOMContentLoaded", main);
 
