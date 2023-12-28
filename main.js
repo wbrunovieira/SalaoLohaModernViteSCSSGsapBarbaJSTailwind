@@ -127,8 +127,8 @@ import "./src/scss/tailwind.scss";
 function circleTransition() {
     return gsap.timeline({ paused: true })
         .to("#transition-circle", {
-            duration: 0.5,
-            scale: 1,
+            duration: 3,
+            scale: 100,
             ease: "power1.inOut"
         })
         .to("#transition-circle", {
@@ -149,25 +149,26 @@ function fadeOut(content) {
   }
 
 function updateActiveLink(namespace) {
+	const oldActiveLinks = document.querySelectorAll('.link-ativo');
+    if (oldActiveLinks.length) {
+        gsap.to(oldActiveLinks, { borderColor: 'transparent', duration: 0.3 });
+        oldActiveLinks.forEach(link => {
+            link.classList.remove('link-ativo');
+        });
+    }
     // Primeiro, remova a classe ativa e a animação de todos os links
-    gsap.to('.link-ativo', { borderColor: 'transparent', duration: 0.3 });
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('link-ativo');
-    });
+   
 
     // Em seguida, adicione a classe ativa e anime o novo link ativo
-    let selector;
-    if (namespace === 'servicos') {
-        selector = 'a[href*="servicos.html"]';
-    } else if (namespace === 'home') {
-        selector = 'a[href*="index.html"]';
+	let selector = namespace === 'servicos' ? 'a[href*="servicos.html"]' : 'a[href*="index.html"]';
+    const newActiveLink = document.querySelector(selector);
+    if (newActiveLink) {
+        newActiveLink.classList.add('link-ativo');
+        gsap.to(newActiveLink, { borderColor: 'red', duration: 0.3 });
+    } else {
+        console.log('Não foi possível encontrar o link ativo para o namespace:', namespace);
     }
 
-    const activeLink = document.querySelector(selector);
-    if (activeLink) {
-        activeLink.classList.add('link-ativo');
-        gsap.to(activeLink, { borderColor: 'red', duration: 0.3 });
-    }
 }
 
 function showPageContentHome() {
@@ -175,55 +176,60 @@ function showPageContentHome() {
   
     const pageContent = document.querySelector('.index'); 
 
-     gsap.to(pageContent, {
-         duration: 4,
+	if (pageContent) {
+        // Primeiro, garante que o elemento está visível e com display block
+        
+        pageContent.style.visibility = 'visible';
+
+    	 gsap.to(pageContent, {
+         duration: 1,
          opacity: 1,
-          display: 'block'
-     });
+        
+		});
 
-	 var path = document.querySelector("#borda-hero");
-	 if (path) {
-	 	var length = path.getTotalLength();
-		
-	 }
-		
-	path.style.strokeDasharray = length;
-	path.style.strokeDashoffset = length;
-
-	gsap.to(path.style, {
-	 		strokeDashoffset: 0,
-			duration: 2, 
-			ease: "back.inOut",
-	 		});
-
-  
-
-			let tl = gsap.timeline({delay: 1});
-
-			tl.to ("#text1", {text: "Atendimento personalizado ",ease: "power1.in" , duration: 1})
-			tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
+		var path = document.querySelector("#borda-hero");
+		if (path) {
+			var length = path.getTotalLength();
 			
-			tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
-			tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
-			tl.to(".imagem-reveal", {
-				clipPath: 'inset(0 0 0 0)',
+		}
+			
+		path.style.strokeDasharray = length;
+		path.style.strokeDashoffset = length;
+
+		gsap.to(path.style, {
+				strokeDashoffset: 0,
 				duration: 2, 
-				ease: 'elastic.out(1,0.3)', 
+				ease: "back.inOut",
+				});
+
+	
+
+				let tl = gsap.timeline({delay: 1});
+
+				tl.to ("#text1", {text: "Atendimento personalizado ",ease: "power1.in" , duration: 1})
+				tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
 				
-			}, "-=7")
+				tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
+				tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
+				tl.to(".imagem-reveal", {
+					clipPath: 'inset(0 0 0 0)',
+					duration: 2, 
+					ease: 'elastic.out(1,0.3)', 
+					
+				}, "-=7")
 
-			 const botao = document.querySelector('#agendar');
+				const botao = document.querySelector('#agendar');
 
-			 botao.addEventListener('mouseenter', () => {
-			 	gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
-			   });
-			  
-			   // Animação de saída do hover
-			   botao.addEventListener('mouseleave', () => {
-			 	gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
-			   });
+				botao.addEventListener('mouseenter', () => {
+					gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
+				});
+				
+				// Animação de saída do hover
+				botao.addEventListener('mouseleave', () => {
+					gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
+				});
 
-			
+			}	
 			
 	
 }
@@ -232,27 +238,29 @@ function showPageContentHome() {
 function showPageContentServicos() {
 
   
-    const pageContent = document.querySelector('.index'); 
-
-	gsap.to(pageContent, {
-		duration: 4,
-		opacity: 1,
-		display: 'block',
-		// Certifique-se de que a string do SVG esteja corretamente formatada e escape as aspas duplas
-		backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'46\' height=\'46\' viewBox=\'0 0 200 200\'%3E%3Cdefs%3E%3ClinearGradient id=\'a\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'33\' x2=\'100\' y2=\'-3\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'b\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'135\' x2=\'100\' y2=\'97\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill=\'%23c5c5c5\' fill-opacity=\'0.02\'%3E%3Crect x=\'100\' width=\'100\' height=\'100\'/%3E%3Crect y=\'100\' width=\'100\' height=\'100\'/%3E%3C/g%3E%3Cg fill-opacity=\'0.02\'%3E%3Cpolygon fill=\'url(%23a)\' points=\'100 30 0 0 200 0\'/%3E%3Cpolygon fill=\'url(%23b)\' points=\'100 100 0 130 0 100 200 100 200 130\'/%3E%3C/g%3E%3C/svg%3E")'
-	});
-
-
-
+    const pageContent = document.querySelector('.index-servicos');
 	
+	if (pageContent) {
+        // Primeiro, garante que o elemento está visível e com display block
+        pageContent.style.display = 'block';
+        pageContent.style.visibility = 'visible';
+
+        // Depois, executa a animação de opacidade
+        gsap.to(pageContent, {
+            duration: 1,
+            opacity: 1,
+            onComplete: () => {
+				backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'46\' height=\'46\' viewBox=\'0 0 200 200\'%3E%3Cdefs%3E%3ClinearGradient id=\'a\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'33\' x2=\'100\' y2=\'-3\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'b\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'135\' x2=\'100\' y2=\'97\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill=\'%23c5c5c5\' fill-opacity=\'0.02\'%3E%3Crect x=\'100\' width=\'100\' height=\'100\'/%3E%3Crect y=\'100\' width=\'100\' height=\'100\'/%3E%3C/g%3E%3Cg fill-opacity=\'0.02\'%3E%3Cpolygon fill=\'url(%23a)\' points=\'100 30 0 0 200 0\'/%3E%3Cpolygon fill=\'url(%23b)\' points=\'100 100 0 130 0 100 200 100 200 130\'/%3E%3C/g%3E%3C/svg%3E")'
+
+                console.log('Animação concluída');
+                // Aqui você pode executar outras ações após a animação, se necessário
+            }
+        });
+    } else {
+        console.log('Elemento .index-servicos não encontrado');
+    }
 
 
-  
-
-			
-			
-			
-	
 }
 
 function Loading() {
@@ -305,25 +313,41 @@ function main() {
 		  }
 		],
 		transitions: [{
+			name: 'default-transition',
 			sync: true,
+			once(data) {
+				// A animação inicial quando a página é carregada pela primeira vez
+				fadeIn(data.next.container);
+			},
 		 async leave(data) {
 			// Animação de saída
-            return new Promise(resolve => {
-                gsap.to(data.current.container, {
-                    duration: 1,
-                    opacity: 0,
-                    onComplete: resolve
-                });
-                transition.play();
+			const done = this.async();
+			transition.play();
+
+            gsap.to(data.current.container, {
+                opacity: 0,
+                onComplete: () => {
+					setTimeout(() => done(), 500);
+                    done();
+                }
             });
+			
+			transition.play();
+            
 
 		  },
 		 async enter(data) {
+			const done = this.async();
+
 			gsap.from(data.next.container, {
-                duration: 1,
-                opacity: 0,
-                onComplete: () => transition.reverse()
-            });
+				opacity: 0,
+				onComplete: () => {
+					transition.reverse();
+					done();
+				}
+			});
+
+			
             updateActiveLink(data.next.namespace);
         	},
 			

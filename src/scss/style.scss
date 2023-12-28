@@ -19,6 +19,11 @@ body {
     position: relative;
 }
 
+.index-servicos {
+    opacity: 0;
+    position: relative;
+}
+
 .link-ativo {
     border-bottom: 2px solid transparent; /* Inicialmente transparente */
 }
@@ -125,18 +130,18 @@ body {
 //     }
 // }
 
-#sombra-falsa {
-    width: 100px; /* Ajuste para o tamanho do seu modelo */
-    height: 100px; /* Ajuste para o tamanho do seu modelo */
-    border-radius: 50%; /* Se o seu modelo for aproximadamente circular */
-    background: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 800px; /* Ajuste a posição para corresponder à posição do seu modelo */
-    left: -300px; /* Ajuste a posição para corresponder à posição do seu modelo */
-    transform: translateX(-50%) translateY(-50%) scale(0.5); /* Ajuste para o tamanho do seu modelo */
-    filter: blur(10px); /* Suaviza a sombra */
-    z-index: 1000; /* Certifique-se de que a sombra está sob o modelo e sobre o conteúdo da página */
-}
+// #sombra-falsa {
+//     width: 100px; /* Ajuste para o tamanho do seu modelo */
+//     height: 100px; /* Ajuste para o tamanho do seu modelo */
+//     border-radius: 50%; /* Se o seu modelo for aproximadamente circular */
+//     background: rgba(0, 0, 0, 0.5);
+//     position: absolute;
+//     top: 800px; /* Ajuste a posição para corresponder à posição do seu modelo */
+//     left: -300px; /* Ajuste a posição para corresponder à posição do seu modelo */
+//     transform: translateX(-50%) translateY(-50%) scale(0.5); /* Ajuste para o tamanho do seu modelo */
+//     filter: blur(10px); /* Suaviza a sombra */
+//     z-index: 1000; /* Certifique-se de que a sombra está sob o modelo e sobre o conteúdo da página */
+// }
 
 ul.transition {
     display: flex;
