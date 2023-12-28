@@ -7,9 +7,12 @@ import barba from "@barba/core";
 import gsap from "gsap";
 import { TextPlugin } from 'gsap/TextPlugin';
 
+import('https://cdn.lordicon.com/lordicon.js');
+
 import "./src/scss/reset.scss";
-import "./src/scss/style.scss";
+
 import "./src/scss/tailwind.scss";
+import "./src/scss/style.scss";
 
 // Variáveis Globais
 // let scene, camera, renderer, model, controls;
@@ -125,18 +128,20 @@ import "./src/scss/tailwind.scss";
    
 // }
 function circleTransition() {
-    return gsap.timeline({ paused: true })
+    return gsap.timeline({ })
         .to("#transition-circle", {
-            duration: 3,
+            duration: 1,
             scale: 100,
-            ease: "power1.inOut"
+			ease: "power1.inOut"
         })
         .to("#transition-circle", {
-            duration: 0.5,
+			
+            duration: 1,
             scale: 0,
             ease: "power1.inOut",
             clearProps: "all" // Limpa os estilos após a animação
-        });
+        })
+		
 }
 
 const transition = circleTransition();
@@ -172,6 +177,13 @@ function updateActiveLink(namespace) {
 }
 
 function showPageContentHome() {
+
+	gsap.to('html', {
+		duration: 1,
+		backgroundColor: '#fff',
+		
+		ease: 'power1.in',
+	})
 
   
     const pageContent = document.querySelector('.index'); 
@@ -221,12 +233,12 @@ function showPageContentHome() {
 				const botao = document.querySelector('#agendar');
 
 				botao.addEventListener('mouseenter', () => {
-					gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "${cor-primaria}", duration: 0.3 });
+					gsap.to(botao, { scale: 1.1, backgroundColor: "#fff", color: "#ed3237", duration: 0.3 });
 				});
 				
 				// Animação de saída do hover
 				botao.addEventListener('mouseleave', () => {
-					gsap.to(botao, { scale: 1, backgroundColor: "${cor-de-fundo}", color: "#ed3237", duration: 0.3 });
+					gsap.to(botao, { scale: 1, backgroundColor: "#fff", color: "#ed3237", duration: 0.3 });
 				});
 
 			}	
@@ -237,8 +249,16 @@ function showPageContentHome() {
 
 function showPageContentServicos() {
 
+	gsap.to('html', {
+		duration: 1,
+		backgroundImage: 'url(/svg/pattern-randomized.svg)',
+		backgroundSize: 'cover',
+		ease: 'power1.in',
+	})
   
     const pageContent = document.querySelector('.index-servicos');
+
+
 	
 	if (pageContent) {
         // Primeiro, garante que o elemento está visível e com display block
@@ -249,13 +269,17 @@ function showPageContentServicos() {
         gsap.to(pageContent, {
             duration: 1,
             opacity: 1,
+			
             onComplete: () => {
-				backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'46\' height=\'46\' viewBox=\'0 0 200 200\'%3E%3Cdefs%3E%3ClinearGradient id=\'a\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'33\' x2=\'100\' y2=\'-3\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3ClinearGradient id=\'b\' gradientUnits=\'userSpaceOnUse\' x1=\'100\' y1=\'135\' x2=\'100\' y2=\'97\'%3E%3Cstop offset=\'0\' stop-color=\'%23000\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%23000\' stop-opacity=\'1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill=\'%23c5c5c5\' fill-opacity=\'0.02\'%3E%3Crect x=\'100\' width=\'100\' height=\'100\'/%3E%3Crect y=\'100\' width=\'100\' height=\'100\'/%3E%3C/g%3E%3Cg fill-opacity=\'0.02\'%3E%3Cpolygon fill=\'url(%23a)\' points=\'100 30 0 0 200 0\'/%3E%3Cpolygon fill=\'url(%23b)\' points=\'100 100 0 130 0 100 200 100 200 130\'/%3E%3C/g%3E%3C/svg%3E")'
+				
 
                 console.log('Animação concluída');
                 // Aqui você pode executar outras ações após a animação, se necessário
             }
         });
+
+		
+
     } else {
         console.log('Elemento .index-servicos não encontrado');
     }
