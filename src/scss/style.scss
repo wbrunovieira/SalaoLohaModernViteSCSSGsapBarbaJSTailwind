@@ -8,7 +8,6 @@ $cor-complementar: #B48E4D;
 //     background-position: center center;
 //     background-attachment: fixed;
 // }
-  
 
 .index {
     opacity: 0;
@@ -16,6 +15,11 @@ $cor-complementar: #B48E4D;
 }
 
 .index-servicos {
+    opacity: 0;
+    position: relative;
+}
+
+.index-destaque {
     opacity: 0;
     position: relative;
 }
@@ -167,8 +171,25 @@ $cor-complementar: #B48E4D;
     height: 100vmax;
     border-radius: 50%;
     transform: scale(0);
-    transform-origin: center center; 
+    transform-origin: 50% 50%; 
 }
 
 
+.card-tilt::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 160px;
+    height: 160%;
+   
+  }
 
+  @keyframes rotation_481 {
+    0% {
+      transform: rotateZ(360deg);
+    }
+  
+    0% {
+      transform: rotateZ(360deg);
+    }
+  }
