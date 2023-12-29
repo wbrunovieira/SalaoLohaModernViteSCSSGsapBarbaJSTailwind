@@ -8,16 +8,6 @@ $cor-complementar: #B48E4D;
 //     background-position: center center;
 //     background-attachment: fixed;
 // }
-
-body {
-   
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Estilo para ocultar inicialmente o conteúdo */
-[data-barba="container"] {
-    visibility: hidden;
-  }
   
 
 .index {
@@ -30,9 +20,7 @@ body {
     position: relative;
 }
 
-.servico {
-    
-}
+
 
 .link-ativo {
     border-bottom: 2px solid transparent; 

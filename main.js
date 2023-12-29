@@ -139,15 +139,17 @@ function circleTransition() {
             duration: 1,
             scale: 0,
             ease: "power1.inOut",
-            clearProps: "all" // Limpa os estilos após a animação
+           
         })
 		
 }
 
 const transition = circleTransition();
-function fadeIn(content) {
-	gsap.to(content, { duration: 1, visibility: 'visible', opacity: 1 });
-  }
+
+
+ function fadeIn(content) {
+ 	gsap.to(content, { duration: 1, visibility: 'visible', opacity: 1 });
+   }
   
 function fadeOut(content) {
 	return gsap.to(content, { duration: 1, visibility: 'hidden', opacity: 0 });
@@ -248,44 +250,43 @@ function showPageContentHome() {
 
 
 function showPageContentServicos() {
-
-	gsap.to('html', {
-		duration: 1,
-		backgroundImage: 'url(/svg/pattern-randomized.svg)',
-		backgroundSize: 'cover',
-		ease: 'power1.in',
-	})
-  
     const pageContent = document.querySelector('.index-servicos');
 
-
-	
-	if (pageContent) {
-        // Primeiro, garante que o elemento está visível e com display block
+    if (pageContent) {
         pageContent.style.display = 'block';
-        pageContent.style.visibility = 'visible';
-
-        // Depois, executa a animação de opacidade
-        gsap.to(pageContent, {
+        
+        // Aplicando animações e estilos com GSAP
+        gsap.to('html', {
             duration: 1,
-            opacity: 1,
-			
-            onComplete: () => {
-				
-
-                console.log('Animação concluída');
-                // Aqui você pode executar outras ações após a animação, se necessário
-            }
+            backgroundImage: 'url(/svg/pattern-randomized.svg)',
+            backgroundSize: 'cover',
+            ease: 'power1.in',
+            opacity: 1
         });
 
-		
+        gsap.from('.card', { 
+            duration: 5, 
+            opacity: 1, 
+            y: 200, 
+            stagger: 1, 
+            ease: 'power1.in',
+            onStart: () => {
+                // Aplicar estilos específicos às imagens
+                document.querySelectorAll('.card-img').forEach(img => {
+                    gsap.set(img, { width: '100%', height: '15rem', objectFit: 'cover' });
+                });
 
+				const cardWidth = '300px'; // Defina a largura desejada aqui
+                document.querySelectorAll('.card').forEach(card => {
+                    gsap.set(card, { width: cardWidth });
+                });
+            }
+        });
     } else {
         console.log('Elemento .index-servicos não encontrado');
     }
-
-
 }
+
 
 function Loading() {
 	gsap.to(".logo", {
@@ -341,12 +342,13 @@ function main() {
 			sync: true,
 			once(data) {
 				// A animação inicial quando a página é carregada pela primeira vez
-				fadeIn(data.next.container);
+				 fadeIn(data.next.container);
 			},
 		 async leave(data) {
 			// Animação de saída
 			const done = this.async();
 			transition.play();
+			
 
             gsap.to(data.current.container, {
                 opacity: 0,
@@ -377,7 +379,7 @@ function main() {
 			
 
 			once(data) {
-				fadeIn(data.next.container);
+				 fadeIn(data.next.container);
 			}
 		}]
 	  });
