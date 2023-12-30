@@ -14,119 +14,115 @@ import "./src/scss/reset.scss";
 import "./src/scss/tailwind.scss";
 import "./src/scss/style.scss";
 
-// Variáveis Globais
-// let scene, camera, renderer, model, controls;
+ //Variáveis Globais
+ let scene, camera, renderer, model, controls;
 
 
-// function initializeThreeJS() {
+ function initializeThreeJS() {
     
 
-//     scene = new THREE.Scene();
-//     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//     camera.position.z = 5;
+     scene = new THREE.Scene();
+     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+     camera.position.z = 5;
 
-//     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-//     renderer.setSize(window.innerWidth, window.innerHeight);
+     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+     renderer.setSize(window.innerWidth, window.innerHeight);
    
-//     document.getElementById('model-container').appendChild(renderer.domElement);
+     document.getElementById('model-container').appendChild(renderer.domElement);
 
-//     // Luzes
-//     const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
-//     scene.add(ambientLight);
+     // Luzes
+     const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+     scene.add(ambientLight);
 
-//     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-//     directionalLight.position.set(1, 1, 1).normalize();
+     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+     directionalLight.position.set(1, 1, 1).normalize();
    
-//     scene.add(directionalLight);
+     scene.add(directionalLight);
 
-//     // Carregar Modelo 3D
-//     const loader = new GLTFLoader();
-//     const dracoLoader = new DRACOLoader();
+     // Carregar Modelo 3D
+     const loader = new GLTFLoader();
+     const dracoLoader = new DRACOLoader();
 
-//     dracoLoader.setDecoderPath('../../node_modules/three/examples/jsm/libs/draco/')
+     dracoLoader.setDecoderPath('../../node_modules/three/examples/jsm/libs/draco/')
 
 
-//     loader.setDRACOLoader(dracoLoader);
+     loader.setDRACOLoader(dracoLoader);
 
-// 	const group = new THREE.Group();
+ 	const group = new THREE.Group();
 
-//     loader.load('models/Hairdryer.glb', (gltf) => {
-// 		model = gltf.scene;
-// 		model.scale.set(0.5, 0.5, 0.5);
-// 		model.position.set(0, -1.5, 0);
+     loader.load('models/Hairdryer.glb', (gltf) => {
+ 		model = gltf.scene;
+ 		model.scale.set(0.5, 0.5, 0.5);
+ 		model.position.set(0, -1.5, 0);
 		
-// 		group.add(model);  // Adicionando o modelo ao grupo
-// 		scene.add(group);
+ 		group.add(model);  // Adicionando o modelo ao grupo
+ 		scene.add(group);
 
-// 		const dragControls = new DragControls([group], camera, renderer.domElement);
+ 		const dragControls = new DragControls([group], camera, renderer.domElement);
 
 
-// 		dragControls.addEventListener('dragstart', function (event) {
-// 			controls.enabled = false; // Desativa os OrbitControls enquanto arrasta
-// 		});
+ 		dragControls.addEventListener('dragstart', function (event) {
+ 			controls.enabled = false; // Desativa os OrbitControls enquanto arrasta
+ 		});
 		
-// 		dragControls.addEventListener('dragend', function (event) {
-// 			controls.enabled = true; // Reativa os OrbitControls após arrastar
-// 		});
+ 		dragControls.addEventListener('dragend', function (event) {
+ 			controls.enabled = true; // Reativa os OrbitControls após arrastar
+ 		});
 	
         
-//     });
+     });
 
-//     // Controles
-//     controls = new OrbitControls(camera, renderer.domElement);
+     // Controles
+     controls = new OrbitControls(camera, renderer.domElement);
 
-// }
+ }
 
-// let isDragging = false;
+ let isDragging = false;
 
-// let previous
+ let previous
 
 
-// Position = {
-//     x: 0,
-//     y: 0
-// };
 
-// document.addEventListener('mousedown', (e) => {
-//     isDragging = true;
-// });
-// document.addEventListener('mousemove', (e) => {
-//     if (isDragging) {
-//         var deltaMove = {
-//             x: e.offsetX - previousMousePosition.x,
-//             y: e.offsetY - previousMousePosition.y
-//         };
+ document.addEventListener('mousedown', (e) => {
+     isDragging = true;
+ });
+ document.addEventListener('mousemove', (e) => {
+     if (isDragging) {
+         var deltaMove = {
+             x: e.offsetX - previousMousePosition.x,
+             y: e.offsetY - previousMousePosition.y
+         };
 
        
 
-//         previousMousePosition.x = e.offsetX;
-//         previousMousePosition.y = e.offsetY;
-//     }
-// });
+         previousMousePosition.x = e.offsetX;
+         previousMousePosition.y = e.offsetY;
+     }
+ });
 
 
-// document.addEventListener('mouseup', (e) => {
-//     isDragging = false;
-// });
+ document.addEventListener('mouseup', (e) => {
+     isDragging = false;
+ });
 
-// function onWindowResize() {
-//     camera.aspect = window.innerWidth / window.innerHeight;
-//     camera.updateProjectionMatrix();
-//     renderer.setSize(window.innerWidth, window.innerHeight);
-// }
+ function onWindowResize() {
+     camera.aspect = window.innerWidth / window.innerHeight;
+     camera.updateProjectionMatrix();
+     renderer.setSize(window.innerWidth, window.innerHeight);
+ }
 
 
-// function animateThreeJS() {
+ function animateThreeJS() {
 
-//     function animate() {
-//         requestAnimationFrame(animate);
-//         renderer.render(scene, camera);
-//         controls.update();
-//     }
+     function animate() {
+         requestAnimationFrame(animate);
+         renderer.render(scene, camera);
+         controls.update();
+     }
 
-//     animate();
+     animate();
    
-// }
+ }
 function circleTransition() {
     return gsap.timeline({ })
         .to("#transition-circle", {
@@ -225,7 +221,7 @@ function showPageContentHome() {
 				tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizadosde beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power1.in" , duration: 2})
 				tl.to(".imagem-reveal", {
 					clipPath: 'inset(0 0 0 0)',
-					duration: 2, 
+					duration: 1, 
 					ease: 'elastic.out(1,0.3)', 
 					
 				}, "-=7")
@@ -251,7 +247,10 @@ function showPageContentServicos() {
     const pageContent = document.querySelector('.index-servicos');
 
     if (pageContent) {
+        
+		pageContent.style.visibility = 'visible';
         pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
         
         // Aplicando animações e estilos com GSAP
         gsap.to('html', {
@@ -333,17 +332,17 @@ function showPageContentServicos() {
             stagger: 1, 
             ease: 'power1.in',
             onStart: () => {
-                // Aplicar estilos específicos às imagens
+                
                 document.querySelectorAll('.card-img').forEach(img => {
                     gsap.set(img, {filter: 'grayscale(50%)',width: '100%', height: '15rem', objectFit: 'cover' });
                 });
 
-				const cardWidth = '300px'; // Defina a largura desejada aqui
+				const cardWidth = '300px'; 
                 document.querySelectorAll('.card').forEach(card => {
                     gsap.set(card, { width: cardWidth });
                 });
 
-				 // Defina a largura desejada aqui
+			
 			
 				
 
@@ -358,7 +357,10 @@ function showPageContentDestaque() {
     const pageContent = document.querySelector('.index-destaque');
 
     if (pageContent) {
+
+		pageContent.style.visibility = 'visible';
         pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
         
         // Aplicando animações e estilos com GSAP
         gsap.to('html', {
@@ -392,35 +394,41 @@ function showPageContentDestaque() {
 
 
 function Loading() {
-	gsap.to(".logo", {
-		duration: 3, 
-		opacity: 1,
-		scale: 1, 
-		ease: "bounce.out", 
-		
-	});
+
+tl = gsap.timeline();
+
+tl.to(".logo", {
+	duration: 1, 
+	opacity: 0,
+	scale: 1, 
+	ease: "bounce.out", 
+	
+});
+
+tl.to(".screen-loading", {
+	duration: 1,
+	opacity: 0,
+	display: 'none',
+})
 
 	
-	gsap.to(".screen-loading", {
-			duration: 3,
-			opacity: 1,
-			display: 'none',
-			
-			
-		});
+tl.to(".bar-loading", {
+	duration: 1,
+	'--bar-width': '100%',
+	ease: "bounce.out",
+	
+}, "-=1")	
 
-		gsap.to('.bar-loading', {
-			duration: 3,
-			'--bar-width': '100%' /* Anima a variável CSS */
-		});
+
+	
 }
 
 
 function main() {
     // Função principal
     gsap.registerPlugin(TextPlugin);
-    // initializeThreeJS();
-    // animateThreeJS();
+     initializeThreeJS();
+     animateThreeJS();
    
 
 	barba.init({
@@ -454,7 +462,15 @@ function main() {
 		transitions: [{
 			name: 'default-transition',
 			sync: true,
+
+
 			once(data) {
+
+				if (data.next.namespace === 'home') {
+					// Executa a animação de loading na primeira carga da página home
+					Loading();
+					fadeIn(data.next.container);
+				  }
 				// A animação inicial quando a página é carregada pela primeira vez
 				 fadeIn(data.next.container);
 			},
@@ -466,10 +482,7 @@ function main() {
 
             gsap.to(data.current.container, {
                 opacity: 0,
-                onComplete: () => {
-					setTimeout(() => done(), 500);
-                    done();
-                }
+               
             });
 			
 			transition.play();
