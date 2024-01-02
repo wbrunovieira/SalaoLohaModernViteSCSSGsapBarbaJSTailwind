@@ -10,24 +10,20 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <title>Home | Salão Loha</title>
 </head>
-<body class="">
-
-  <section class="screen-loading">
-    <div class="bar-loading"></div>
-    <img class="logo mt-5" src="svg/logo-salao-loha-agrupado.svg" class="logo" />
-  </section>
+<body >
 
   <nav class="bg-white shadow-lg fixed relative">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
         <div class="flex space-x-7">
           <div>
-            <!-- Logo e nome da empresa -->
+            
+
             <a href="#" class="flex items-center py-4 px-2">
               <img src="svg/logo-salao-loha-agrupado-nav.svg" alt="Logotipo Salão Loha" class=" mr-2">
               <div class="flex flex-col">
-                <span class="font-semibold text-gray-600 text-lg">Salão Loha</span>
-                <span class="font-semibold text-gray-500 text-lg">Estética e Beleza</span>
+                <span class="font-semibold text-gray-600 font-sans text-lg/4">Salão Loha</span>
+                <span class="font-semibold text-gray-500 font-sans text-sm">Estética e Beleza</span>
               </div>
               
             </a>
@@ -35,11 +31,11 @@
         </div>
         <!-- Menu à direita -->
         <div class="hidden md:flex items-center space-x-1">
-          <a href="/index.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2  duration-1000 ease-in-out">Início</a>
-          <a href="/src/pages/servicos.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Serviços1</a>
-          <a href="/src/pages/destaque.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Destaque</a>
-          <a href="/src/pages/portfolio.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Portfólio</a>
-          <a href="/src/pages/contato.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Contato</a>
+          <a href="/index.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2  duration-1000 ease-in-out">Início</a>
+          <a href="/src/pages/servicos.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Serviços1</a>
+          <a href="/src/pages/destaque.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Destaque</a>
+          <a href="/src/pages/portfolio.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Portfólio</a>
+          <a href="/src/pages/contato.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Contato</a>
         </div>
       </div>
     </div>
@@ -47,50 +43,53 @@
 
  <div data-barba="wrapper">
 
-  <div id="transition-circle" class="fixed top-1/2 left-1/2 bg-red-500 z-50"></div>
 
-      <div id="model-container"></div>
-      <div class="sombra-falsa"></div> 
+
       
     
 
   <main data-barba="container" data-barba-namespace="home" class="flex flex-row md:flex-row max-w-6xl mx-auto px-4 altura-ajustada index" >
 
-    
-
-     
-
-        <div class="flex-1 p-4 bg-cor-primaria">
+  
+        <div class="flex flex-1 flex-col  p-4 bg-cor-primaria">
 
           
-              <div class="relative flex flex-col justify-end items-end text-white ">
+              <div class="relative flex flex-col justify-end items-end text-white font-sans  ">
 
-                <div class="text-align-left">
+                <div class="text-align-left overflow-visible">
                  
-                  <h2 class="text-xl pl-10 text-hero mt-10" id="text1" ></h2>
-                  <h2 class="text-xl pl-10 mt-0 text-hero" id="text2"></h2>
-                  <h2 class="text-xl pl-10 mt-0 text-hero" id="text3"></h2>
+                  <h2 class="text-xl pl-10 font-semibold text-white mt-10" id="text1" ></h2>
+                  <h2 class="text-xl pl-10 font-semibold text-white mt-0" id="text2"></h2>
+                  <h2 class="text-xl pl-10 mt-0 text-white" id="text3"></h2>
                   
-                  <h1 class="text-6xl pl-10 font-bold mt-4" id="text4"></h1>
-                  <h6 class="text-base pl-10 max-w-md " id="text5"></h6>
+                  <h1 class="text-9xl pl-10 font-bold mt-4 absolute text-nowrap z-10 top-56" id="text4"></h1>
+                  <h6 class="text-base pl-10 mb-4 max-w-md mt-1" id="text5"></h6>
 
+                    
                   <div class="absolute top-0 left-0 z-0">
                     <svg width="450" height="400" viewBox="0 0 569 816"      fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path id="borda-hero" d="M562 76.1293V7H7V809H561V739.871" stroke="white" stroke-width="13"/>
                     </svg>
                   </div>
 
-                  <div class="pl-10 mt-2 z-50 absolute" >
-                    <a id="agendar" href="https://wa.me/5511942124242" class="btn cursor-pointer" target="_blank">Agendar agora</a>
+                  <div id="cursor"></div>
+                  <div class="ml-9 mt-1 font-semibold ">
+                      <button onclick="window.open('https://wa.me/5511942124242', '_blank')" class="rounded-lg pl-12 hover-link cursor-pointer z-20" area-label="Agende Agora" cursor-type="button">
+                        <span area-hidden >
+                          <span>Agende<span>Agende</span> </span>
+                          <span>agora<span>agora</span> </span>
+                        </span>
+                      </button>
                   </div>
 
-                  <div class="absolute top-250 left-190 z-0 mr-2">
+
+                  <div class="absolute top-50 left-50 z-10">
                     <lord-icon
                     src="https://cdn.lordicon.com/igciyimj.json"
                     trigger="morph"
                     state="morph-glitter"
                     id="coracao"
-                    style="width:40px;height:40px">
+                    style="width:40px;height:40px; transform: translate(710%, -220%);">
                     </lord-icon>
                   </div> 
 
