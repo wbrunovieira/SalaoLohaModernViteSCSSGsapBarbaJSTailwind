@@ -1,4 +1,5 @@
 $prymary-red: #a52830;
+$prymary-red-light: #ed3237;
 $cor-fundo: #F5F5F5;
 $cor-texto: #323232;
 $cor-complementar: #fffff0;
@@ -23,9 +24,9 @@ $sans: 'Poppins', sans-serif;
     background: $cor-complementar;
     color: #ed3237;
     border-bottom: solid 1px rgba($cor-fundo, 0.2);
-    padding: 0.5rem 0.5rem 0.5rem;
+    padding: 0.4rem 0.4rem 0.4rem;
     font-family: $sans;
-    font-size: 1rem;
+    font-size: .9rem;
     text-decoration: none;
     
     position: relative;
@@ -75,26 +76,46 @@ $sans: 'Poppins', sans-serif;
     transform: translateY(-200%);
  }
 
- #cursor {
-    pointer-events: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: solid 1px rgba($cor-fundo, 0.2);
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: 0.35s ease width, 0.35s ease height, 0.35s ease border, 0.35s ease background;
-    transform: translate(-50%, -50%);
- }
 
- #cursor .button {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: solid 1px transparent;
-    background: rgba($cor-fundo, 0.5);
 
- }
+
+
+
+
+ .button-container button {
+  -webkit-mask: url("/img/nature-sprite.png");
+  mask: url("/img/nature-sprite.png");
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+}
+
+  .button-container button:hover {
+    animation: anim1 0.3s steps(22) none;
+  }
+
+
+
+  @keyframes anim1 {
+    from {
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
+    }
+    to {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+  }
+  
+  @keyframes anim2 {
+    from {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+    to {
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
+    }
+  }
 
 
 
@@ -102,16 +123,31 @@ $sans: 'Poppins', sans-serif;
         height: calc(100vh - 100px);
 }
 
+#coracao {
+  background: none !important;
+}
+
 .coluna-imagem {
-        background-image: url('/img/bg-intro.jpg'); 
-        background-size: cover;
-        background-position: center;
+  background-image: url('/img/bg-intro.jpg'); 
+  background-size: cover;
+  background-position: center;
+}
+.coracao-box {
+  perspective: 500px;
+  perspective-origin: 50% 50%;
+ 
 }
 
 
-.imagem-reveal {
-    clip-path: inset(0 0 100% 0); /* Oculta a imagem inicialmente */
-    transition: clip-path 2s ease-out; /* Transição suave */
+
+ .imagem-reveal {      clip-path: inset(0 0 100% 0);
+      transition: clip-path 2s ease-out; 
+ }
+
+
+.text-box {
+  // max-height: 300px;
+  // max-width: 400px;
 }
 
 
@@ -123,6 +159,7 @@ $sans: 'Poppins', sans-serif;
 .custom-font-size {
     font-size: 2.25rem; 
 }
+
 
 
 

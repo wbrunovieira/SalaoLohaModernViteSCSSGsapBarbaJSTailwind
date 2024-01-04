@@ -407,7 +407,7 @@ tl.to(".logo", {
 
 tl.to(".screen-loading", {
 	duration: 1,
-	opacity: 0,
+	opacity: 1,
 	display: 'none',
 })
 
