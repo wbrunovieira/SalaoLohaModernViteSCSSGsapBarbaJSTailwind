@@ -12,7 +12,12 @@ $sans: 'Poppins', sans-serif;
     position: relative;
 }
 
-
+.card-img {
+  width: 100%; 
+  height: 15rem; 
+  object-fit: cover;
+  opacity: 0; 
+}
 
 .link-ativo {
     border-bottom: 2px solid transparent; 

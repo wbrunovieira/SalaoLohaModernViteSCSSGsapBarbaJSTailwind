@@ -149,6 +149,77 @@ function showBeforePageContentHome() {
 }
 
 
+function showPageContentServicos() {
+
+    const pageContent = document.querySelector('.index-servicos');
+
+    if (pageContent) {
+        
+		pageContent.style.visibility = 'visible';
+        pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
+        
+		
+        gsap.to('html', {
+            duration: 2,
+            backgroundImage: 'url(/svg/pattern-randomized.svg)',
+            backgroundSize: 'cover',
+            ease: 'power1.in',
+            opacity: 1
+        });
+
+		let tl = gsap.timeline({delay: 2});
+
+		tl.to("#text3", {text: " Espaço de Beleza e Bem-estar Integral",ease: "power1.in" , duration: 1})
+		tl.to("#text4", {text: "Realce sua beleza natural com cuidados que vão da cabeça aos pés ",ease: "power1.in" , duration: 1.5})
+			
+		
+        gsap.from('.card', { 
+            duration: 2, 
+            opacity: 1, 
+            y: 200, 
+            stagger: 1, 
+            ease: 'power1.in',
+            onStart: () => {
+                
+            document.querySelectorAll('.card-img').forEach(img => {
+                    gsap.set(img, {width: '100%', height: '15rem', objectFit: 'cover', opacity: 1 });
+                });
+
+				const cardWidth = '300px'; 
+                document.querySelectorAll('.card').forEach(card => {
+                    gsap.set(card, { width: cardWidth });
+
+					card.addEventListener('mouseenter', () => {
+						gsap.to(card, {
+							duration: 0.5,
+							rotationY: 15,
+							rotationX: 15,
+							ease: 'back'
+						});
+					});
+
+					card.addEventListener('mouseleave', () => {
+						gsap.to(card, {
+							duration: 0.5,
+							rotationY: 0,
+							rotationX: 0,
+							ease: 'back'
+						});
+					});
+                });
+
+            }
+
+			
+        });
+
+    } else {
+        console.log('Elemento .index-servicos não encontrado');
+    }
+}
+
+
 
 
 
@@ -176,6 +247,21 @@ function main() {
 			},
 			beforeLeave() {
 				fadeOut('.index');
+			}
+		  },
+		  {
+			namespace: 'servicos',
+			beforeEnter() {
+
+			showPageContentServicos();
+
+			},
+			afterEnter() {
+				fadeIn('.index-servicos')
+				
+			},
+			beforeLeave() {
+				fadeOut('.index-servicos');
 			}
 		  },
 		  
