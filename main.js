@@ -48,6 +48,12 @@ function updateActiveLink(namespace) {
 
 function showPageContentHome() {
 
+	gsap.to('html', {
+		duration: 1,
+		backgroundColor: '#fff',
+		
+		ease: 'power1.in',
+	})
 	
  let tl = gsap.timeline();
 
@@ -103,6 +109,7 @@ function showPageContentHome() {
 }	
 
 function showBeforePageContentHome() {
+
 	gsap.to('html', {
 		duration: 1,
 		backgroundColor: '#fff',
@@ -235,9 +242,13 @@ function main() {
 		  {
 			namespace: 'home',
 			beforeEnter() {
-
-			
-			 
+				gsap.to('html', {
+                    duration: 1,
+                    backgroundColor: '#fff',
+                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    ease: 'power1.in',
+                });	
+			updateActiveLink('home'); 
 			showBeforePageContentHome();
 			},
 			afterEnter() {
@@ -252,12 +263,14 @@ function main() {
 		  {
 			namespace: 'servicos',
 			beforeEnter() {
-
-			showPageContentServicos();
+				
+			updateActiveLink('servicos');	
+			
 
 			},
 			afterEnter() {
 				fadeIn('.index-servicos')
+				showPageContentServicos();
 				
 			},
 			beforeLeave() {
@@ -273,6 +286,7 @@ function main() {
 
 
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     let namespace = 'home'; 
