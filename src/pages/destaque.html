@@ -6,7 +6,7 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <title>Destaque | Salão Loha</title>
 </head>
-<body class="">
+<body class="index-destaque">
   <nav class="bg-white shadow-lg">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
@@ -25,63 +25,59 @@
         </div>
         <!-- Menu à direita -->
         <div class="hidden md:flex items-center space-x-1">
-
-
-          
-            <a href="/index.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2  duration-1000 ease-in-out">Início</a>
-            <a href="/src/pages/servicos.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Serviços1</a>
-            <a href="/src/pages/destaque.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Destaque</a>
-            <a href="/src/pages/portfolio.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Portfólio</a>
-            <a href="/src/pages/contato.html" data-barba="link" class="py-4 px-2 text-gray-500 font-semibold border-b-2 border-transparent hover:border-cor-primaria duration-1000 ease-in-out">Contato</a>
+          <a href="/index.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2  duration-1000 ease-in-out hover:border-cor-primaria-light duration-1000 ease-in-out">Início</a>
+          <a href="/src/pages/servicos.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Serviços</a>
+          <a href="/src/pages/destaque.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Destaque</a>
+          <a href="/src/pages/portfolio.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Portfólio</a>
+          <a href="/src/pages/contato.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Contato</a>
         </div>
       </div>
     </div>
   </nav>
 
- <div class="destaque" data-barba="wrapper">
+ <div class="destaque bg-special" data-barba="wrapper">
 
  
-
-  <div id="transition-circle" class="fixed  bg-red-500 z-50"></div>
-
-    
-
-    <main data-barba="container" data-barba-namespace="destaque" class="flex max-w-6xl mx-auto px-4 index-destaque mb-4" >
+    <main data-barba="container" data-barba-namespace="destaque" class="flex max-w-6xl mx-auto px-4 index-destaque mb-4 font-sans" >
 
         
      
-        <div class="destaque bg-[#ed3237]">
+        <div class="flex  bg-cor-primaria">
 
 			
-				  <div class="bg-red-500 w-full flex justify-end ">
+				  <div class= "flex-1 justify-center items-center p-4 ">
           
-          <img src="/img/about.jpg" loading="lazy" alt="sala de esterilização" class="pl-2 w-100">
-          
-				    <div class="" >
-					
-						<h3 class="text-4xl font-semibold">O Poder da Esterilização: </h3>
-
-            <div class="flex justify-center items-center mb-6">
-
-              <span class="">Eliminando Microorganismos para um Ambiente Seguro</span>
-              
-              <lord-icon
-							src="https://cdn.lordicon.com/dnfmiyuo.json"
-							trigger="hover"
-							stroke="light"
-							colors="primary:#121331,secondary:#f4a09c,tertiary:#ebe6ef,quaternary:#92140c"
-							style="width:60px;height:60px">
-						</lord-icon>
-
+           <img src="/img/about.jpg" loading="lazy" alt="sala de esterilização" class="rounded-sm">
+            <p id="text1" class="mt-4 font-semibold text-sm text-cor-fundo text-sm font-sans"></p>
           </div>
 
-							<p>A esterilização é um método essencial que tem como objetivo eliminar todas as formas de vida microbiana, incluindo vírus, bactérias, fungos e outros organismos, que podem contaminar instrumentos, materiais e objetos. <br><br> Esse processo é fundamental, especialmente em ambientes médicos e laboratoriais, para garantir a segurança e higiene. Utilizando uma autoclave, um equipamento especializado, a esterilização é realizada de forma eficaz, assegurando que os materiais sejam seguros para uso sem riscos de contaminação.</p>
+				  <div class="flex-1 text-box" >
+
+					<div class="flex justify-center items-center mb-6 mt-4">
+            <h3 class="text-4xl font-semibold text-cor-fundo">O Poder da Esterilização </h3>
+            <lord-icon
+              src="https://cdn.lordicon.com/dnfmiyuo.json"
+              trigger="hover"
+              stroke="light"
+              colors="primary:#121331,secondary:#f4a09c,tertiary:#ebe6ef,quaternary:#92140c"
+              style="width:60px;height:60px">
+            </lord-icon>
+        </div>
+            <div class="flex justify-center items-center mb-6">
+
+              <span class="text-cor-primaria bg-cor-fundo p-2">Eliminando Microorganismos para um Ambiente Seguro</span>
+              
+
+            </div>
+          
+
+							<p class="text-cor-fundo p-4">A esterilização é um método essencial que tem como objetivo eliminar todas as formas de vida microbiana, incluindo vírus, bactérias, fungos e outros organismos, que podem contaminar instrumentos, materiais e objetos. <br><br> Esse processo é fundamental, especialmente em ambientes médicos e laboratoriais, para garantir a segurança e higiene. Utilizando uma autoclave, um equipamento especializado, a esterilização é realizada de forma eficaz, assegurando que os materiais sejam seguros para uso sem riscos de contaminação.</p>
 						
 					
 	
-				</div>
+				 </div>
 			
-			</div>
+			  </div>
 		</div>
       
    
@@ -96,10 +92,8 @@
 
 
 
-    <!-- Script de Entrada do Vite -->
+
     <script type="module" src="/main.js"></script>
-    <!-- <style>
-      @import 'https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css';
-    </style> -->
+  
 </body>
 </html>

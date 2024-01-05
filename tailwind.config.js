@@ -1,6 +1,8 @@
 export default {
   content: [
-    './index.html',
+    './*.html',
+    './**/*.html',
+    './src/pages/destaque.html', 
     './src/**/*.{js,jsx,ts,tsx,vue}',
     './src/**/*.{scss,css}',
   ],

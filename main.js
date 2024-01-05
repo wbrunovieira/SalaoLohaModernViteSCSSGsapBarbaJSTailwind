@@ -227,7 +227,31 @@ function showPageContentServicos() {
 }
 
 
+function showPageContentDestaque() {
+    const pageContent = document.querySelector('.index-destaque');
 
+    if (pageContent) {
+
+		pageContent.style.visibility = 'visible';
+        pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
+        
+     
+
+		let tl = gsap.timeline({delay: 2});
+
+		tl.to("#text1", {text: " Saúde é tudo",ease: "power1.in" , duration: 1})
+		tl.to("#text1", {text: " ",ease: "power1.in" , delay: 1, duration: 1})
+		
+		
+		
+
+		
+
+    } else {
+        console.log('Elemento .index-destaque não encontrado');
+    }
+}
 
 
 function main() {
@@ -263,18 +287,49 @@ function main() {
 		  {
 			namespace: 'servicos',
 			beforeEnter() {
+				gsap.to('html', {
+                    duration: 1,
+                    backgroundColor: '#fff',
+                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    ease: 'power1.in',
+                });		
 				
 			updateActiveLink('servicos');	
 			
 
 			},
 			afterEnter() {
-				fadeIn('.index-servicos')
+				fadeIn('.index-servicos');
 				showPageContentServicos();
 				
 			},
 			beforeLeave() {
 				fadeOut('.index-servicos');
+			}
+		  },
+		  {
+			namespace: 'destaque',
+			beforeEnter() {
+
+				gsap.to('html', {
+                    duration: 1,
+                    backgroundColor: '#fff',
+                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    ease: 'power1.in',
+                });	
+				
+			updateActiveLink('destaque');	
+			document.querySelector('.destaque').classList.add('bg-special');
+
+			},
+			afterEnter() {
+				fadeIn('.index-destaque')
+				showPageContentDestaque();
+				
+			},
+			beforeLeave() {
+				fadeOut('.index-destaque');
+				document.querySelector('.destaque').classList.remove('bg-special');
 			}
 		  },
 		  
