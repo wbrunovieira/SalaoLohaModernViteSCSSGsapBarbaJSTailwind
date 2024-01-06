@@ -271,6 +271,10 @@ function showPageContentPortfolio() {
         console.log('Elemento .index-portfolio não encontrado');
     }
 
+	function randomBetween(min, max) {
+		return Math.random() * (max - min) + min;
+	  }
+
 	const positions = [
 		{ top: "40%", left: "40%" },
 		{ top: "0%", left: "30%" },
@@ -290,18 +294,13 @@ function showPageContentPortfolio() {
 	  
 	const imgs = document.querySelectorAll(".img");
 	  
-	
-	
-	  gsap.to(".img", {
-		scale: 1,
-		width: "300px",
-		height: "400px",
-		stagger: 0.15,
-		duration: 0.75,
-		ease: "power2.out",
-		delay: 1,
-		onComplete: scatterAndShrink
+	gsap.set(".img", {
+		top: "45%",
+		left: "50%",
+		transform: "translate(-50%, -50%) scale(0)"
 	  });
+	
+	 
 	  
 	  gsap.from("p", {
 		y: 40,
@@ -311,6 +310,17 @@ function showPageContentPortfolio() {
 		  amount: 0.15
 		},
 		delay: 0.5
+	  });
+
+	  gsap.to(".img", {
+		scale: 1,
+		width: "300px",
+		height: "400px",
+		stagger: 0.25,
+		duration: 1,
+		ease: "power2.out",
+		delay: 1,
+		onComplete: scatterAndShrink
 	  });
 
 	  gsap.to("p", {
@@ -327,17 +337,21 @@ function showPageContentPortfolio() {
 	  });
 	  
 	  function scatterAndShrink() {
-		gsap.to(".img", {
-		  top: (i) => positions[i].top,
-		  left: (i) => positions[i].left,
-		  transform: "none",
-		  width: "150px",
-		  height: "200px",
-		  stagger: 0.075,
-		  duration: 0.75,
-		  ease: "power2.out"
+		imgs.forEach((img, i) => {
+		  const originalPosition = JSON.parse(img.getAttribute('data-original-position'));
+		  const rotation = randomBetween(-10, 10); // Gera uma rotação aleatória novamente
+		  gsap.to(img, {
+			top: originalPosition.top,
+			left: originalPosition.left,
+			transform: `rotate(${rotation}deg)`, // Aplica a rotação
+			width: "150px",
+			height: "200px",
+			ease: "power2.out",
+			duration: 0.75
+		  });
 		});
 	  }
+	  
 	  
 	  function applyBlurEffect() {
 		const elementsToBlur = document.querySelectorAll('.img:not([data-enlarged="true"])');
@@ -386,7 +400,7 @@ function showPageContentPortfolio() {
 		} else {
 		  setTimeout(() => removeBlurEffect(), 100);
 	  
-		  gsap.to(img, {
+		gsap.to(img, {
 			zIndex: 1,
 			top: originalPosition.top,
 			left: originalPosition.left,
@@ -400,9 +414,12 @@ function showPageContentPortfolio() {
 	  }
 	  
 	  imgs.forEach((img, i) => {
+		
 		img.setAttribute('data-original-position', JSON.stringify(positions[i]));
 		img.setAttribute('data-enlarged', 'false');
 		img.addEventListener('click', toggleImageSize);
+		const rotation = randomBetween(-10, 10);
+		gsap.to(img, { rotation: rotation, duration: 0 });
 	  });
 	  
 	
