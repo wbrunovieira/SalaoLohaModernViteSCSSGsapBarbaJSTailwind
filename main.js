@@ -34,7 +34,10 @@ function updateActiveLink(namespace) {
    
     let selector = namespace === 'servicos' ? 'a[href*="servicos.html"]' : 
                    namespace === 'destaque' ? 'a[href*="destaque.html"]' : 
+				   namespace === 'portfolio' ? 'a[href*="portfolio.html"]' :
                    'a[href*="index.html"]';
+
+	console.log('portfolio', selector);
     const newActiveLink = document.querySelector(selector);
 
     if (newActiveLink) {
@@ -253,6 +256,157 @@ function showPageContentDestaque() {
     }
 }
 
+function showPageContentPortfolio() {
+
+	const pageContent = document.querySelector('.index-portfolio');
+
+    if (pageContent) {
+
+		pageContent.style.visibility = 'visible';
+        pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
+        
+ 
+    } else {
+        console.log('Elemento .index-portfolio não encontrado');
+    }
+
+	const positions = [
+		{ top: "0%", left: "0%" },
+		{ top: "0%", left: "30%" },
+		{ top: "0%", left: "60%" },
+		{ top: "16%", left: "15%" },
+		{ top: "16%", left: "40%" },
+		{ top: "16%", left: "90%" },
+		{ top: "32%", left: "50%" },
+		{ top: "32%", left: "75%" },
+		{ top: "48%", left: "0%" },
+		{ top: "64%", left: "30%" },
+		{ top: "64%", left: "50%" },
+		{ top: "64%", left: "90%" },
+		{ top: "80%", left: "20%" },
+		{ top: "80%", left: "70%" }
+	  ];
+	  
+	const imgs = document.querySelectorAll(".img");
+	  
+	
+	
+	  gsap.to(".img", {
+		scale: 1,
+		width: "300px",
+		height: "400px",
+		stagger: 0.15,
+		duration: 0.75,
+		ease: "power2.out",
+		delay: 1,
+		onComplete: scatterAndShrink
+	  });
+	  
+	  gsap.from("p", {
+		y: 40,
+		ease: "power4.inOut",
+		duration: 1,
+		stagger: {
+		  amount: 0.15
+		},
+		delay: 0.5
+	  });
+
+	  gsap.to("p", {
+		top: "40px",
+		ease: "power4.inOut",
+		duration: 1,
+		stagger: {
+		  amount: 0.15
+		},
+		delay: 3,
+		onComplete: () => {
+		  document.querySelector(".header").remove();
+		}
+	  });
+	  
+	  function scatterAndShrink() {
+		gsap.to(".img", {
+		  top: (i) => positions[i].top,
+		  left: (i) => positions[i].left,
+		  transform: "none",
+		  width: "150px",
+		  height: "200px",
+		  stagger: 0.075,
+		  duration: 0.75,
+		  ease: "power2.out"
+		});
+	  }
+	  
+	  function applyBlurEffect() {
+		const elementsToBlur = document.querySelectorAll('.img:not([data-enlarged="true"])');
+		gsap.to(elementsToBlur, {
+		  filter: 'blur(20px)',
+		  duration: 0.75,
+		  ease: 'power2.out'
+		});
+	  }
+	  
+	  function removeBlurEffect() {
+		const elementsToBlur = document.querySelectorAll('.img:not([data-enlarged="true"])');
+		gsap.to(elementsToBlur, {
+		  filter: 'blur(0px)',
+		  duration: 1,
+		  ease: 'power2.out'
+		});
+	  }
+	  
+	  function toggleImageSize(event) {
+		const img = event.currentTarget;
+		const isEnlarged = img.getAttribute('data-enlarged') === 'true';
+		const originalPosition = JSON.parse(img.getAttribute('data-original-position'));
+		const viewportWidth = window.innerWidth;
+		const viewportHeight = window.innerHeight;
+	  
+		if (!isEnlarged) {
+		  const enlargedWidth = 500; 
+		  const enlargedHeight = 600; 
+		  const centeredLeft = (viewportWidth - enlargedWidth) / 2;
+		  const centeredTop = (viewportHeight - enlargedHeight) / 2;
+		  const topCorrection = 75; 
+		  const correctedTop = centeredTop - topCorrection;
+	  
+		  gsap.to(img, {
+			zIndex: 1000,
+			top: correctedTop + 'px',
+			left: centeredLeft + 'px',
+			width: enlargedWidth + 'px',
+			height: enlargedHeight + 'px',
+			ease: 'power4.out',
+			duration: 1
+		  });
+		  img.setAttribute('data-enlarged', 'true');
+		  applyBlurEffect();
+		} else {
+		  setTimeout(() => removeBlurEffect(), 100);
+	  
+		  gsap.to(img, {
+			zIndex: 1,
+			top: originalPosition.top,
+			left: originalPosition.left,
+			width: '175px',
+			height: '100px',
+			ease: 'power4.out',
+			duration: 1
+		  });
+		  img.setAttribute('data-enlarged', 'false');
+		}
+	  }
+	  
+	  imgs.forEach((img, i) => {
+		img.setAttribute('data-original-position', JSON.stringify(positions[i]));
+		img.setAttribute('data-enlarged', 'false');
+		img.addEventListener('click', toggleImageSize);
+	  });
+	  
+	
+}
 
 function main() {
    
@@ -269,7 +423,7 @@ function main() {
 				gsap.to('html', {
                     duration: 1,
                     backgroundColor: '#fff',
-                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    backgroundImage: 'none', 
                     ease: 'power1.in',
                 });	
 			updateActiveLink('home'); 
@@ -290,7 +444,7 @@ function main() {
 				gsap.to('html', {
                     duration: 1,
                     backgroundColor: '#fff',
-                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    backgroundImage: 'none',
                     ease: 'power1.in',
                 });		
 				
@@ -314,7 +468,7 @@ function main() {
 				gsap.to('html', {
                     duration: 1,
                     backgroundColor: '#fff',
-                    backgroundImage: 'none', // Remove o backgroundImage definido em 'servicos'
+                    backgroundImage: 'none', 
                     ease: 'power1.in',
                 });	
 				
@@ -330,6 +484,36 @@ function main() {
 			beforeLeave() {
 				fadeOut('.index-destaque');
 				document.querySelector('.destaque').classList.remove('bg-special');
+			}
+		  },
+
+		  {
+			namespace: 'portfolio',
+			beforeEnter() {
+
+				gsap.to('html', {
+                    duration: 1,
+                    backgroundColor: '#fff',
+                    backgroundImage: 'none', 
+                    ease: 'power1.in',
+                });		
+
+			if (document.querySelector('.page-portfolio')) {
+					import('/src/scss/portfolio.scss');
+				  }
+				
+			updateActiveLink('portfolio');	
+			showPageContentPortfolio();
+
+			},
+			afterEnter() {
+				fadeIn('.index-portfolio')
+				
+				
+			},
+			beforeLeave() {
+				
+				
 			}
 		  },
 		  
@@ -352,6 +536,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	if (path.includes('destaque.html')) {
         namespace = 'destaque';
+    }
+
+	if (path.includes('portolio.html')) {
+        namespace = 'portfolio';
     }
 
     updateActiveLink(namespace);
