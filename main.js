@@ -272,7 +272,7 @@ function showPageContentPortfolio() {
     }
 
 	const positions = [
-		{ top: "0%", left: "0%" },
+		{ top: "40%", left: "40%" },
 		{ top: "0%", left: "30%" },
 		{ top: "0%", left: "60%" },
 		{ top: "16%", left: "15%" },
