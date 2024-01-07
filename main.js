@@ -4,6 +4,8 @@ import { TextPlugin } from 'gsap/TextPlugin';
 
 import('https://cdn.lordicon.com/lordicon.js');
 
+import { Gradient } from './src/js/Gradient';
+
 import "./src/scss/reset.scss";
 
 import "./src/scss/tailwind.scss";
@@ -258,18 +260,26 @@ function showPageContentDestaque() {
 
 function showPageContentPortfolio() {
 
-	const pageContent = document.querySelector('.index-portfolio');
+	const pageContent = document.querySelector('.page-portfolio');
 
     if (pageContent) {
 
 		pageContent.style.visibility = 'visible';
         pageContent.style.display = 'block';
 		pageContent.style.opacity = '1';
+
+		const gradient = new Gradient();
+
+// Inicializa o gradiente para o canvas
+		gradient.initGradient('#gradient-canvas');
         
  
     } else {
         console.log('Elemento .index-portfolio não encontrado');
     }
+
+
+
 
 	function randomBetween(min, max) {
 		return Math.random() * (max - min) + min;
@@ -510,13 +520,14 @@ function main() {
 
 				gsap.to('html', {
                     duration: 1,
-                    backgroundColor: '#fff',
+                    backgroundColor: 'none',
                     backgroundImage: 'none', 
                     ease: 'power1.in',
                 });		
 
 			if (document.querySelector('.page-portfolio')) {
 					import('/src/scss/portfolio.scss');
+					
 				  }
 				
 			updateActiveLink('portfolio');	
