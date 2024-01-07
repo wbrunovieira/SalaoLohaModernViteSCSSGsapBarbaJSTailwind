@@ -311,7 +311,7 @@ function showPageContentPortfolio() {
 	gsap.set(".img", {
 		top: "45%",
 		left: "50%",
-		transform: "translate(-50%, -50%) scale(0)"
+		transform: "translate(-50%, -70%) scale(0)"
 	  });
 	
 	 
@@ -397,7 +397,7 @@ function showPageContentPortfolio() {
 		  const enlargedHeight = 600; 
 		  const centeredLeft = (viewportWidth - enlargedWidth) / 2;
 		  const centeredTop = (viewportHeight - enlargedHeight) / 2;
-		  const topCorrection = 75; 
+		  const topCorrection = -40; 
 		  const correctedTop = centeredTop - topCorrection;
 	  
 		  gsap.to(img, {
