@@ -37,9 +37,10 @@ function updateActiveLink(namespace) {
     let selector = namespace === 'servicos' ? 'a[href*="servicos.html"]' : 
                    namespace === 'destaque' ? 'a[href*="destaque.html"]' : 
 				   namespace === 'portfolio' ? 'a[href*="portfolio.html"]' :
+				   namespace === 'contato' ? 'a[href*="contato.html"]' :
                    'a[href*="index.html"]';
 
-	console.log('portfolio', selector);
+
     const newActiveLink = document.querySelector(selector);
 
     if (newActiveLink) {
@@ -259,6 +260,9 @@ function showPageContentDestaque() {
 }
 
 function showPageContentPortfolio() {
+	document.body.classList.add('page-portfolio');
+	const gradient = new Gradient();
+		gradient.initGradient('#gradient-canvas');
 
 	const pageContent = document.querySelector('.page-portfolio');
 
@@ -268,18 +272,17 @@ function showPageContentPortfolio() {
         pageContent.style.display = 'block';
 		pageContent.style.opacity = '1';
 
-		const gradient = new Gradient();
-
-// Inicializa o gradiente para o canvas
-		gradient.initGradient('#gradient-canvas');
         
  
     } else {
-        console.log('Elemento .index-portfolio não encontrado');
+        console.log('Elemento page-portfolio não encontrado');
     }
 
 
-
+	if (document.getElementById('gradient-canvas')) {
+		const gradient = new Gradient();
+		gradient.initGradient('#gradient-canvas');
+		}	 
 
 	function randomBetween(min, max) {
 		return Math.random() * (max - min) + min;
@@ -435,6 +438,7 @@ function showPageContentPortfolio() {
 	
 }
 
+
 function main() {
    
     gsap.registerPlugin(TextPlugin);
@@ -517,7 +521,8 @@ function main() {
 		  {
 			namespace: 'portfolio',
 			beforeEnter() {
-
+				
+				document.body.classList.add('page-portfolio');
 				gsap.to('html', {
                     duration: 1,
                     backgroundColor: 'none',
@@ -527,16 +532,27 @@ function main() {
 
 			if (document.querySelector('.page-portfolio')) {
 					import('/src/scss/portfolio.scss');
+					if (document.getElementById('gradient-canvas')) {
+						const gradient = new Gradient();
+						console.log('Gradiente chegou',gradient);
+						gradient.initGradient('#gradient-canvas');
+						}	 
 					
 				  }
+				  
 				
 			updateActiveLink('portfolio');	
 			showPageContentPortfolio();
 
 			},
 			afterEnter() {
+				document.body.classList.add('page-portfolio');
+				const gradient = new Gradient();
+				console.log('Gradiente chegou no after enter',gradient);
+				gradient.initGradient('#gradient-canvas');
 				fadeIn('.index-portfolio')
-				
+
+			
 				
 			},
 			beforeLeave() {
