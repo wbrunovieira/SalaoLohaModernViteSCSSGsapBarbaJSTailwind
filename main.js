@@ -234,6 +234,7 @@ function showPageContentServicos() {
 
 
 function showPageContentDestaque() {
+	document.body.classList.add('bg-special');
     const pageContent = document.querySelector('.index-destaque');
 
     if (pageContent) {
@@ -472,6 +473,7 @@ function main() {
 		  {
 			namespace: 'servicos',
 			beforeEnter() {
+				document.body.classList.remove('bg-special');
 				gsap.to('html', {
                     duration: 1,
                     backgroundColor: '#fff',
@@ -514,6 +516,7 @@ function main() {
 			},
 			beforeLeave() {
 				fadeOut('.index-destaque');
+				document.body.classList.add('bg-special');
 				document.querySelector('.destaque').classList.remove('bg-special');
 			}
 		  },
@@ -521,7 +524,7 @@ function main() {
 		  {
 			namespace: 'portfolio',
 			beforeEnter() {
-				
+				document.body.classList.remove('bg-special');
 				document.body.classList.add('page-portfolio');
 				gsap.to('html', {
                     duration: 1,
