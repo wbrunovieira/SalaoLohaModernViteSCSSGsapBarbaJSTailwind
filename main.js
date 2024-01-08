@@ -11,6 +11,10 @@ import "./src/scss/reset.scss";
 import "./src/scss/tailwind.scss";
 import "./src/scss/style.scss";
 
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/brands.css'; 
+
+
 
 
 
@@ -439,6 +443,10 @@ function showPageContentPortfolio() {
 	
 }
 
+function showPageContentContato() {
+	console.log('Show Page Content Contato');
+}
+
 
 function main() {
    
@@ -563,6 +571,37 @@ function main() {
 				
 			}
 		  },
+
+		  {
+			namespace: 'contato',
+			beforeEnter() {
+				document.body.classList.remove('bg-special');
+				
+				gsap.to('html', {
+                    duration: 1,
+                    backgroundColor: 'none',
+                    backgroundImage: 'none', 
+                    ease: 'power1.in',
+                });		
+
+		
+				
+			updateActiveLink('contato');	
+			showPageContentContato();
+
+			},
+			afterEnter() {
+				
+				fadeIn('.index-contato')
+
+			
+				
+			},
+			beforeLeave() {
+				
+				
+			}
+		  },
 		  
 
 		],
@@ -587,6 +626,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	if (path.includes('portolio.html')) {
         namespace = 'portfolio';
+    }
+
+	if (path.includes('contato.html')) {
+        namespace = 'contato';
     }
 
     updateActiveLink(namespace);
