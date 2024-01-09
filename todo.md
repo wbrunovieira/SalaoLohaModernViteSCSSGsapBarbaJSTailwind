@@ -1,10 +1,10 @@
  [x] terminar pagina contato
 
+  [x] adcionar botao whatsapp
+
  [ ] adcionar gerenciamento de estado Zustand
 
  [ ] adcionar rosa treejs
-
- [ ] adcionar botao whatsapp
 
  [ ] adcionar instagram secao na home
 
