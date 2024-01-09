@@ -1,4 +1,6 @@
- [ ] terminar pagina contato
+ [x] terminar pagina contato
+
+ [ ] adcionar gerenciamento de estado Zustand
 
  [ ] adcionar rosa treejs
 

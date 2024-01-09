@@ -444,7 +444,22 @@ function showPageContentPortfolio() {
 }
 
 function showPageContentContato() {
-	console.log('Show Page Content Contato');
+	const pageContent = document.querySelector('.index-contato');
+
+    if (pageContent) {
+
+		pageContent.style.visibility = 'visible';
+        pageContent.style.display = 'block';
+		pageContent.style.opacity = '1';
+
+        
+ 
+    } else {
+        console.log('Elemento page-portfolio não encontrado');
+    }
+
+
+	
 }
 
 
