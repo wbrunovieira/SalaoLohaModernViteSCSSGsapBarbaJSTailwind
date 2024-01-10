@@ -2,6 +2,8 @@
 
   [x] adcionar botao whatsapp
 
+ [ ] nav nao esta fixa
+
  [ ] adcionar gerenciamento de estado Zustand
 
  [ ] adcionar rosa treejs

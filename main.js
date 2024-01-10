@@ -16,7 +16,34 @@ import '@fortawesome/fontawesome-free/css/brands.css';
 
 
 
+function pageTransition(){
+	let tl = gsap.timeline();
 
+	tl.to('.transitions', {
+		duration: 1,
+		scaleY:1 ,
+		transformOrigin: 'bottom',
+		ease: 'power4.inOut'
+	});
+
+	tl.to('.transitions', {
+		duration: 1,
+		scaleY:0 ,
+		transformOrigin: 'top',
+		ease: 'power4.inOut',
+		delay:0.2,
+	});
+}
+
+function delay(n){
+	n = n || 0;
+
+return new Promise((done) => {
+	setTimeout(() => {
+		done();
+	}, n);
+});
+}
 
 function fadeOut(content) {
 	return gsap.to(content, { duration: 1, visibility: 'hidden', opacity: 0  });
@@ -471,6 +498,18 @@ function main() {
    
 
 	barba.init({
+		sync: true,
+		transitions: [
+			{
+				async leave(data) {
+					const done = this.async();
+
+					pageTransition();
+					await delay(1000);
+					done();
+				}
+			}
+		],
 		views: [
 		  {
 			namespace: 'home',

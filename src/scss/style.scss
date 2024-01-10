@@ -241,3 +241,17 @@ $sans: 'Poppins', sans-serif;
 .whatsapp-float:hover .whatsapp-message-box {
   background-color: #e5e5e5;
 }
+
+.transitions {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: rgb(165,40,48);
+  background: linear-gradient(180deg, rgba(165,40,48,1) 0%, rgba(237,50,55,1) 35%, rgba(255,255,255,1) 100%);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+}
