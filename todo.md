@@ -10,7 +10,7 @@
 
  [ ] adcionar instagram secao na home
 
- [ ] adcionar transicoes
+ [x] adcionar transicoes
 
  [ ] adcionar loadings
 

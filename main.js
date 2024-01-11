@@ -101,12 +101,14 @@ function showPageContentHome() {
 		duration: 1, 
 		ease: 'elastic.out(1,0.3)', 
 
-		}, )		
+		}, )
+	tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizados de beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power4.in" , duration: 2 })		
+	tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})		
 	tl.to ("#text1", {text: "Atendimento personalizado ",ease: "power1.in" , duration: 1})
 	tl.to ("#text2", {text: "Beleza atualizada ",ease: "power1.in" , duration: 1})
 			
-	tl.to ("#text4", {text: "Salão Loha ",ease: "power1.in" , duration: 1})
-	tl.to ("#text5", {text: "Aqui no Salão Loha oferecemos uma experiência acolhedora  com serviços  personalizados de beleza por profissionais qualificados e atualizados com as últimas tendências.",ease: "power4.in" , duration: 2 })
+	
+	
 	.to("#text6", {text: "Te esperamos", ease: "power1.in", duration: 2})
 
 	  tl.to("#text6", {text: "", ease: "reverse", duration: 2}, "+=2")
