@@ -1,28 +1,27 @@
- [x] terminar pagina contato
+[x] terminar pagina contato
 
-  [x] adcionar botao whatsapp
+[x] adcionar botao whatsapp
 
- [ ] nav nao esta fixa
+[x] adcionar transicoes
 
- [ ] adcionar gerenciamento de estado Zustand
+[ ] nav nao esta fixa
 
- [ ] adcionar rosa treejs
+[ ] adcionar gerenciamento de estado Zustand
 
- [ ] adcionar instagram secao na home
+[ ] adcionar rosa treejs
 
- [x] adcionar transicoes
+[ ] adcionar instagram secao na home
 
- [ ] adcionar loadings
+[ ] adcionar loadings
 
- [ ] verificar erro de montagem da paginas - paginas desmontagens antes da vizualizacao
+[ ] verificar erro de montagem da paginas - paginas desmontagens antes da vizualizacao
 
- [ ] colocar meta tags em todas as paginas
+[ ] colocar meta tags em todas as paginas
 
- [ ] cadastrar pagina no clarity
+[ ] cadastrar pagina no clarity
 
- [ ] deploy e dominio
-  
- [ ] apresentacao da pagina nas redes sociais do salao loja
+[ ] deploy e dominio
 
- [ ] fazer footer com a WB DIGITAL SOLUTIOSN LINKS
- 
+[ ] apresentacao da pagina nas redes sociais do salao loja
+
+[ ] fazer footer com a WB DIGITAL SOLUTIOSN LINKS
