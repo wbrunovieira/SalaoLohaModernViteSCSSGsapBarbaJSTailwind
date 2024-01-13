@@ -1,6 +1,7 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
+import { initializeThreeJS } from './src/js/threeSetup';
 
 import('https://cdn.lordicon.com/lordicon.js');
 
@@ -506,6 +507,7 @@ function main() {
           });
           updateActiveLink('home');
           showBeforePageContentHome();
+          initializeThreeJS();
         },
         afterEnter() {
           fadeIn('.index');
