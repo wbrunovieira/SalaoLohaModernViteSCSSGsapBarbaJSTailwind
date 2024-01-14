@@ -1,143 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <title>Serviços | Salão Loha</title>
-</head>
-<body class="">
-  <nav class="bg-white shadow-lg">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between">
-        <div class="flex space-x-7">
-          <div>
-            <!-- Logo e nome da empresa -->
-            <a href="#" class="flex items-center py-4 px-2">
-              <img src="/img/logo.png" alt="Logotipo Salão Loha" class=" mr-2">
-              <div class="flex flex-col">
-                <span class="font-semibold text-gray-500 text-lg">Salão Loha</span>
-                <span class="font-semibold text-gray-500 text-lg">Estética e Beleza</span>
-              </div>
-              
-            </a>
+  </head>
+  <body class="">
+    <nav class="bg-white shadow-lg z-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+            <div>
+              <!-- Logo e nome da empresa -->
+              <a href="#" class="flex items-center py-4 px-2">
+                <img
+                  src="/img/logo.png"
+                  alt="Logotipo Salão Loha"
+                  class="mr-2"
+                />
+                <div class="flex flex-col">
+                  <span class="font-semibold text-gray-500 text-lg"
+                    >Salão Loha</span
+                  >
+                  <span class="font-semibold text-gray-500 text-lg"
+                    >Estética e Beleza</span
+                  >
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- Menu à direita -->
+          <div class="hidden md:flex items-center space-x-1">
+            <a
+              href="/index.html"
+              data-barba="link"
+              class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 duration-1000 ease-in-out hover:border-cor-primaria-light duration-1000 ease-in-out"
+              >Início</a
+            >
+            <a
+              href="/src/pages/servicos.html"
+              data-barba="link"
+              class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out"
+              >Serviços</a
+            >
+            <a
+              href="/src/pages/destaque.html"
+              data-barba="link"
+              class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out"
+              >Destaque</a
+            >
+            <a
+              href="/src/pages/portfolio.html"
+              data-barba="link"
+              class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out"
+              >Portfólio</a
+            >
+            <a
+              href="/src/pages/contato.html"
+              data-barba="link"
+              class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out"
+              >Contato</a
+            >
           </div>
         </div>
-        <!-- Menu à direita -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a href="/index.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2  duration-1000 ease-in-out hover:border-cor-primaria-light duration-1000 ease-in-out" >Início</a>
-          <a href="/src/pages/servicos.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Serviços</a>
-          <a href="/src/pages/destaque.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Destaque</a>
-          <a href="/src/pages/portfolio.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Portfólio</a>
-          <a href="/src/pages/contato.html" data-barba="link" class="py-4 px-2 text-gray-500 font-sans font-semibold border-b-2 border-transparent hover:border-cor-primaria-light duration-1000 ease-in-out">Contato</a>
-        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
- <div class="servicos" data-barba="wrapper">
+    <div class="servicos" data-barba="wrapper">
+      <div class="transitions"></div>
 
- 
-  <div class="transitions"></div>
-  
+      <a
+        href="https://wa.me/+5511942124242"
+        class="whatsapp-float"
+        target="_blank"
+      >
+        <div class="whatsapp-message-box d-none d-md-flex">
+          <lord-icon
+            src="https://cdn.lordicon.com/kiynvdns.json"
+            trigger="hover"
+            stroke="light"
+            colors="primary:#121331,secondary:#f28ba8,tertiary:#ffc738,quaternary:#30e849,quinary:#ebe6ef"
+            style="width: 40px; height: 140px; padding-right: 10px"
+          >
+          </lord-icon>
+          <div class="whatsapp-text">
+            <p class="">Oi !</p>
+            <p class="">Podemos te ajudar?</p>
+          </div>
+        </div>
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+      </a>
 
-  <a href="https://wa.me/+5511942124242" class="whatsapp-float" target="_blank">
-    <div class="whatsapp-message-box d-none d-md-flex "> 
-    <lord-icon
-      src="https://cdn.lordicon.com/kiynvdns.json"
-      trigger="hover"
-      stroke="light"
-      colors="primary:#121331,secondary:#f28ba8,tertiary:#ffc738,quaternary:#30e849,quinary:#ebe6ef"
-      style="width:40px;height:140px; padding-right: 10px;">
-    </lord-icon>
-    <div class="whatsapp-text">
-      <p class="">Oi !</p>
-      <p class="">Podemos te ajudar? </p>
-    </div>
-  </div>
-    <i class="fab fa-whatsapp whatsapp-icon"></i>
-</a> 
+      <main
+        data-barba="container"
+        data-barba-namespace="servicos"
+        class="flex max-w-6xl mx-auto px-4 index-servicos mb-4"
+      >
+        <div class="flex flex-col px-4 mx-auto">
+          <h3 class="font-bold custom-font-size mt-5" id="text3"></h3>
 
-    <main data-barba="container" data-barba-namespace="servicos" class="flex max-w-6xl mx-auto px-4 index-servicos mb-4" >
-
-      <div class="flex flex-col px-4 mx-auto">
-          
-        <h3 class="font-bold custom-font-size mt-5" id="text3"></h3>   
-          
-        <div class="flex justify-center items-center mb-6">
+          <div class="flex justify-center items-center mb-6">
             <lord-icon
               src="https://cdn.lordicon.com/bzrhdlij.json"
               trigger="hover"
-              style="width:40px;height:40px">
+              style="width: 40px; height: 40px"
+            >
             </lord-icon>
 
-            <p class="text-3xl" id="text4"> </p>
+            <p class="text-3xl" id="text4"></p>
 
             <lord-icon
-            src="https://cdn.lordicon.com/lsghypdq.json"
-            trigger="hover"
-            stroke="light"
-            colors="primary:#121331,secondary:#e83a30"
-            style="width:40px;height:40px">
+              src="https://cdn.lordicon.com/lsghypdq.json"
+              trigger="hover"
+              stroke="light"
+              colors="primary:#121331,secondary:#e83a30"
+              style="width: 40px; height: 40px"
+            >
             </lord-icon>
-
+          </div>
         </div>
-       
-      </div>
 
-     
+        <div class="flex mx-2 mb-6">
+          <!-- Card 1 -->
+          <div class="px-2 mb-4">
+            <div
+              class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4"
+            >
+              <img
+                src="/img/produto1.jpg"
+                alt="Imagem 1"
+                class="card-img w-full h-56"
+                loading="lazy"
+              />
+              <div class="card-body p-4">
+                <h2 class="card-title text-lg font-semibold">Cabeleireiro</h2>
+                <p class="card-text text-gray-600 text-sm">
+                  Ir ao cabeleireiro é um ato de amor próprio. Nada como tirar
+                  um tempinho para cuidar da gente.
+                </p>
+              </div>
+            </div>
+          </div>
 
-      
-      <div class="flex  mx-2 mb-6">
+          <!-- Card 2 -->
+          <div class="w-full md:w-1/3 px-2 mb-4">
+            <div
+              class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4"
+            >
+              <img
+                src="/img/produto2.jpg"
+                alt="Imagem 2"
+                class="card-img rounded-lg w-full h-56 object-cover"
+                loading="lazy"
+              />
+              <div class="card-body p-4">
+                <h2 class="card-title text-lg font-semibold">Manicure</h2>
+                <p class="card-text text-gray-600 text-sm">
+                  Qual é a importância da manicure? Unhas limpas e bem cuidadas
+                  são sinônimos de higiene e auto cuidado.
+                </p>
+              </div>
+            </div>
+          </div>
 
-       
-                <!-- Card 1 -->
-                <div class="px-2 mb-4">
-
-                  <div class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4">
-                    
-                    <img  src="/img/produto1.jpg" alt="Imagem 1" class="card-img w-full h-56" loading="lazy"/>
-                    <div class="card-body p-4 " >
-                      <h2 class="card-title text-lg font-semibold ">Cabeleireiro</h2>
-                      <p class="card-text text-gray-600 text-sm">Ir ao cabeleireiro é um ato de amor próprio. Nada como tirar um tempinho para cuidar da gente.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="w-full md:w-1/3 px-2 mb-4">
-                  <div class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4">
-                    <img src="/img/produto2.jpg" alt="Imagem 2" class="card-img rounded-lg  w-full  h-56  object-cover" loading="lazy"/>
-                    <div class="card-body p-4">
-                      <h2 class="card-title text-lg font-semibold">Manicure</h2>
-                      <p class="card-text text-gray-600 text-sm">Qual é a importância da manicure? Unhas limpas e bem cuidadas são sinônimos de higiene e auto cuidado.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="w-full md:w-1/3 px-2 mb-4">
-                  <div class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4">
-                    <img src="/img/produto3.jpg" alt="Imagem 3" class="card-img w-full h-56  object-cover " loading="lazy"/>
-                    <div class="card-body p-4">
-                      <h2 class="card-title text-lg font-semibold">O que é terapia capilar</h2>
-                      <p class="card-text text-gray-600 text-sm">A terapia capilar é uma abordagem holística de cuidado com os cabelos...</p>
-                    </div>
-                  </div>
-                </div>
+          <!-- Card 3 -->
+          <div class="w-full md:w-1/3 px-2 mb-4">
+            <div
+              class="card card-tilt bg-white shadow-lg rounded-lg overflow-hidden p-4"
+            >
+              <img
+                src="/img/produto3.jpg"
+                alt="Imagem 3"
+                class="card-img w-full h-56 object-cover"
+                loading="lazy"
+              />
+              <div class="card-body p-4">
+                <h2 class="card-title text-lg font-semibold">
+                  O que é terapia capilar
+                </h2>
+                <p class="card-text text-gray-600 text-sm">
+                  A terapia capilar é uma abordagem holística de cuidado com os
+                  cabelos...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
-      
-
-
-    </main>
-
-</div>
-
-
-
-
     <script type="module" src="/main.js"></script>
-  
-</body>
+  </body>
 </html>
