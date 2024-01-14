@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 let scene, camera, renderer, controls;
 
@@ -35,10 +36,50 @@ export function initializeThreeJS() {
   scene.add(ambientLight);
 
   renderer = new THREE.WebGLRenderer({ alpha: true });
-  const width = 300; // Substitua com a largura desejada
-  const height = 150; // Substitua com a altura desejada
+  const width = 1200;
+  const height = 900;
   renderer.setSize(width, height);
   controls = new OrbitControls(camera, renderer.domElement);
+
+  const loaderHeart = new GLTFLoader();
+
+  const heartMaterial = new THREE.MeshPhongMaterial({ color: 0xff69b4 });
+
+  loaderHeart.load(
+    '/models/heart.glb',
+    function (gltf) {
+      for (let i = 0; i < 20; i++) {
+        const heart = gltf.scene.clone();
+
+        heart.position.set(
+          (Math.random() - 0.5) * 100,
+          (Math.random() - 0.5) * 100,
+          (Math.random() - 0.5) * 100
+        );
+
+        heart.rotation.set(
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+          Math.random() * Math.PI
+        );
+
+        const scale = Math.random() * 5.5 + 5.5;
+        heart.scale.set(scale, scale, scale);
+
+        heart.traverse(function (node) {
+          if (node.isMesh) {
+            node.material = heartMaterial;
+          }
+        });
+
+        scene.add(heart);
+      }
+    },
+    undefined,
+    function (error) {
+      console.error(error);
+    }
+  );
 
   document.getElementById('model-container').appendChild(renderer.domElement);
   console.log('🚀 terminou', renderer);
