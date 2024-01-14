@@ -150,7 +150,7 @@ function showPageContentHome() {
     rotateX: 0,
     rotateY: 0,
     translateZ: 0,
-    boxShadow: 'none', // Remove a sombra
+    boxShadow: 'none',
     ease: 'power1.in',
     duration: 1,
   });
