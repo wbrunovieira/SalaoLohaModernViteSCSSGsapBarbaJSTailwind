@@ -41,24 +41,28 @@ export function initializeThreeJS() {
   renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.shadowMap.enabled = true;
 
-  const width = 1200;
-  const height = 900;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
   renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
   controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.25;
 
   const loaderHeart = new GLTFLoader();
 
   loaderHeart.load(
     '/models/heart.glb',
     function (gltf) {
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 6; i++) {
         const heart = gltf.scene.clone();
 
         heart.position.set(
-          (Math.random() - 0.5) * 100,
-          (Math.random() - 0.5) * 100,
-          (Math.random() - 0.5) * 100
+          (Math.random() - 0.5) * 5,
+          (Math.random() - 0.5) * 5,
+          (Math.random() - 0.5) * 5
         );
 
         heart.rotation.set(
@@ -67,7 +71,7 @@ export function initializeThreeJS() {
           Math.random() * Math.PI
         );
         const heartMaterial = new THREE.MeshPhongMaterial({ color: 0xff69b4 });
-        const scale = Math.random() * 5.5 + 5.5;
+        const scale = Math.random() * 0.5 + 0.5;
         heart.scale.set(scale, scale, scale);
 
         heart.traverse(function (node) {

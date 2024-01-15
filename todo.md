@@ -20,6 +20,8 @@
 
 [ ] cadastrar pagina no clarity
 
+[ ] teste de performance
+
 [ ] deploy e dominio
 
 [ ] apresentacao da pagina nas redes sociais do salao loja
