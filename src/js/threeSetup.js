@@ -34,28 +34,20 @@ export function initializeThreeJS() {
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
-
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableZoom = false;
   controls.enableDamping = true;
   controls.dampingFactor = 0.25;
 
   const loader = new GLTFLoader();
-  let rose;
+
   loader.load(
     '/models/rose/rose-new.glb',
     function (gltf) {
       gltf.scene.traverse(function (child) {
-        if (child.isMesh && child.name === 'rose') {
-          rose = child;
-          rose.material.needsUpdate = true;
+        if (child.isMesh) {
+          child.material.needsUpdate = true;
         }
       });
-
-      if (rose) {
-        rose.rotation.y = -Math.PI / 6;
-      }
-
       scene.add(gltf.scene);
     },
     undefined,
