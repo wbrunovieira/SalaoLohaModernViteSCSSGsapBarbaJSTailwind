@@ -14,6 +14,7 @@ export function initializeThreeJS() {
     1000
   );
   camera.position.z = 5;
+  camera.position.y = 5;
 
   scene.add(camera);
 
@@ -48,7 +49,7 @@ export function initializeThreeJS() {
         if (child.isMesh) {
           child.material.needsUpdate = true;
 
-          child.position.y += 4;
+          child.position.set = (0, 8, 5);
         }
       });
       scene.add(gltf.scene);

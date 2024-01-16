@@ -165,7 +165,6 @@ $sans: 'Poppins', sans-serif;
   text-decoration: none;
 }
 
-/* Estilização da caixa de mensagem branca */
 .whatsapp-message-box {
   background-color: white;
   color: #128c7e;
@@ -192,7 +191,6 @@ $sans: 'Poppins', sans-serif;
   padding-left: 5px;
 }
 
-/* Estilização do ícone do WhatsApp */
 .whatsapp-icon {
   font-size: 30px;
   background-color: #25d366;
@@ -201,7 +199,6 @@ $sans: 'Poppins', sans-serif;
   z-index: 100;
 }
 
-/* Mudar a visibilidade ao passar o mouse */
 .whatsapp-float:hover .whatsapp-icon {
   background-color: #128c7e;
   color: #fff;
@@ -231,15 +228,6 @@ $sans: 'Poppins', sans-serif;
   transform: scaleY(0);
 }
 
-.circle {
-  position: fixed;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  background: #029999;
-  top: 50%;
-}
-
 .hero {
   overflow: hidden;
   width: 100%;
@@ -249,38 +237,35 @@ $sans: 'Poppins', sans-serif;
   justify-content: center;
 }
 
-.animationWrapper {
-  display: flex;
-  align-items: center;
-  opacity: 0;
-}
+@media screen and (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+  }
 
-.logo img {
-  width: 100px;
-}
+  .menu {
+    display: none;
+  }
 
-.words {
-  display: grid;
-  width: 400px;
-  margin-left: 20px;
-}
+  .menu.responsive {
+    display: block;
+    position: absolute;
+    width: 30%;
+    opacity: 0.7;
+    top: 80px;
+    left: 0;
+    z-index: 20;
+    background-color: #fff; /* ou qualquer outra cor de fundo que você preferir */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-.words > * {
-  grid-area: 1 / 1;
-}
+  .menu.responsive a {
+    display: block;
+    text-align: left;
+    padding: 10px 20px;
+    color: black; /* ou qualquer outra cor de texto que você preferir */
+  }
 
-.rotator {
-  display: grid;
-  width: 400px;
-}
-
-.rotator > * {
-  grid-area: 1 / 1;
-}
-
-.rotator h1 {
-  display: flex;
-  align-items: center;
-  font-size: 2em;
-  line-height: 1em;
+  .link-ativo {
+    color: white;
+  }
 }

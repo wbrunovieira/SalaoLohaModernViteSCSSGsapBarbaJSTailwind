@@ -15,62 +15,14 @@ import './src/scss/style.scss';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import '@fortawesome/fontawesome-free/css/brands.css';
 
-function init() {
-  gsap.set('body', { opacity: 1 });
-  gsap.set('.circle', { xPercent: -50, yPercent: -50 });
-
-  let centerX = window.innerWidth / 2;
-  let centerY = window.innerHeight / 2;
-
-  Math.getDistance = function (x1, y1, x2, y2) {
-    var xs = x2 - x1,
-      ys = y2 - y1;
-    xs *= xs;
-    ys *= ys;
-    return Math.sqrt(xs + ys);
-  };
-
-  let radius = Math.getDistance(0, 0, centerX, centerY);
-  let fullWidth = radius * 2;
-  let percentIncrease = fullWidth / 100;
-
-  let tl = gsap
-    .timeline({ onComplete: enableScrollTimeline })
-    .to('.circle', { x: '90vw' })
-    .to('.circle', {
-      x: '50vw',
-      scale: percentIncrease,
-      duration: 1,
-      ease: 'power1.in',
-    })
-    .set('.animationWrapper', { opacity: 1 }, '<+=0.5')
-    .from('.headings h1', { xPercent: -100, opacity: 0, duration: 1 }, '<')
-    .from('.headings h2', { xPercent: 100, opacity: 0, duration: 1 }, '<+0.25')
-    .from('.logo', { scale: 0.3, opacity: 0, duration: 0.5 }, '<+0.5')
-
-    .duration(5);
-
-  let scrollTimeline = gsap
-    .timeline({ paused: true })
-    .to('.headings h1', { y: -100, opacity: 0 })
-    .to('.headings h2', { y: 100, opacity: 0 }, '<')
-    .set('.rotator', { opacity: 1 }, '<')
-    .from('.rotator h1', { opacity: 0, scale: 0, stagger: 1 }, '<')
-    .to('.rotator h1', { opacity: 0, scale: 2, stagger: 1 }, '<+1');
-
-  function enableScrollTimeline() {
-    // taglines away and rotator
-
-    ScrollTrigger.create({
-      trigger: '.hero',
-      start: 'top top',
-      pin: true,
-      end: '+=' + window.innerHeight * 3,
-      animation: scrollTimeline,
-      scrub: 0.5,
-    });
+document.getElementById('menu-button').addEventListener('click', function () {
+  var menu = document.querySelector('.menu');
+  if (menu.classList.contains('responsive')) {
+    menu.classList.remove('responsive');
+  } else {
+    menu.classList.add('responsive');
   }
-}
+});
 
 function pageTransition() {
   let tl = gsap.timeline();
@@ -545,12 +497,6 @@ function main() {
       {
         enter(data) {
           // Verificar se o loading não foi exibido ainda
-          if (!loadingShown) {
-            // Exibir o loading
-            init();
-            // Definir a variável de controle para true
-            loadingShown = true;
-          }
         },
         async leave(data) {
           const done = this.async();
