@@ -6,10 +6,13 @@ let scene, camera, renderer, controls, gltf;
 
 export function initializeThreeJS() {
   scene = new THREE.Scene();
-
+  const aspect = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
   camera = new THREE.PerspectiveCamera(
     75,
-    window.innerWidth / window.innerHeight,
+    aspect.width / aspect.height,
     0.1,
     1000
   );
@@ -67,6 +70,18 @@ export function initializeThreeJS() {
   } else {
     console.error('Elemento "model-container" não encontrado.');
   }
+
+  window.addEventListener('resize', () => {
+    aspect.width = window.innerWidth;
+    aspect.height = window.innerHeight;
+
+    camera.aspect = aspect.width / aspect.height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(aspect.width, aspect.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  });
+
   const clock = new THREE.Clock();
 
   const animate = () => {
@@ -75,7 +90,7 @@ export function initializeThreeJS() {
     renderer.render(scene, camera);
 
     if (gltf && gltf.scene) {
-      gltf.scene.rotation.y += elapsedTime * -0.001;
+      gltf.scene.rotation.y += elapsedTime * -0.0005;
     }
 
     window.requestAnimationFrame(animate);
