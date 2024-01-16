@@ -24,6 +24,79 @@ document.getElementById('menu-button').addEventListener('click', function () {
   }
 });
 
+function applyResponsiveStylesServicos() {
+  const pageContent = document.querySelector('.index-servicos');
+  if (!pageContent) {
+    console.log('Elemento .index-servicos não encontrado');
+    return;
+  }
+
+  const cardsContainer = document.querySelector('.cards-container'); // Substitua '.cards-container' pelo seletor do contêiner dos seus cards
+  if (!cardsContainer) {
+    console.log('Contêiner dos cards não encontrado');
+    return;
+  }
+
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile) {
+    // Aplica estilos para dispositivos móveis
+    gsap.set('.card', { width: '100%' });
+    gsap.set(cardsContainer, { flexDirection: 'column' });
+    // Outros estilos específicos para mobile
+  } else {
+    // Aplica estilos para dispositivos maiores
+    gsap.set('.card', { width: '300px' });
+    gsap.set(cardsContainer, { flexDirection: 'row' });
+    // Outros estilos para desktop ou tablets
+  }
+}
+
+function Loading() {
+  tl = gsap.timeline();
+
+  tl.to('.logo', {
+    duration: 2,
+    opacity: 0,
+    scale: 1,
+    ease: 'bounce.out',
+  });
+
+  tl.to('.screen-loading', {
+    duration: 2,
+    opacity: 1,
+    display: 'none',
+  });
+
+  tl.to(
+    '.bar-loading',
+    {
+      duration: 1,
+      '--bar-width': '100%',
+      ease: 'bounce.out',
+    },
+    '-=1'
+  );
+}
+
+function applyResponsiveStylesDestaque() {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const imgs = document.querySelectorAll('.img');
+
+  if (isMobile) {
+    // Define o tamanho das imagens para dispositivos móveis
+    imgs.forEach((img) => {
+      gsap.set(img, {
+        width: '50px', // ou qualquer outro tamanho desejado
+        height: '60px', // ajuste a altura proporcionalmente
+      });
+    });
+  }
+}
+
+window.addEventListener('load', applyResponsiveStylesServicos);
+window.addEventListener('resize', applyResponsiveStylesServicos);
+
 function pageTransition() {
   let tl = gsap.timeline();
 
@@ -387,11 +460,11 @@ function showPageContentPortfolio() {
       const originalPosition = JSON.parse(
         img.getAttribute('data-original-position')
       );
-      const rotation = randomBetween(-10, 10); // Gera uma rotação aleatória novamente
+      const rotation = randomBetween(-10, 10);
       gsap.to(img, {
         top: originalPosition.top,
         left: originalPosition.left,
-        transform: `rotate(${rotation}deg)`, // Aplica a rotação
+        transform: `rotate(${rotation}deg)`,
         width: '150px',
         height: '200px',
         ease: 'power2.out',
@@ -495,8 +568,13 @@ function main() {
     sync: true,
     transitions: [
       {
-        enter(data) {
-          // Verificar se o loading não foi exibido ainda
+        once(data) {
+          if (data.next.namespace === 'home') {
+            Loading();
+            fadeIn(data.next.container);
+          }
+
+          fadeIn(data.next.container);
         },
         async leave(data) {
           const done = this.async();

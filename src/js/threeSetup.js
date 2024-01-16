@@ -20,6 +20,7 @@ export function initializeThreeJS() {
   camera.position.y = 7;
 
   scene.add(camera);
+  const modelContainer = document.getElementById('model-container');
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 1);
   const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -38,9 +39,11 @@ export function initializeThreeJS() {
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  controls = new OrbitControls(camera, renderer.domElement);
+
+  controls = new OrbitControls(camera, modelContainer);
+
   controls.enableDamping = true;
-  controls.dampingFactor = 0.25;
+  controls.dampingFactor = 0.51;
   controls.enableZoom = false;
 
   const loader = new GLTFLoader();
@@ -61,9 +64,6 @@ export function initializeThreeJS() {
       console.error(error);
     }
   );
-  let rotationSpeed = 0.005;
-
-  const modelContainer = document.getElementById('model-container');
 
   if (modelContainer) {
     modelContainer.appendChild(renderer.domElement);
@@ -90,7 +90,7 @@ export function initializeThreeJS() {
     renderer.render(scene, camera);
 
     if (gltf && gltf.scene) {
-      gltf.scene.rotation.y += elapsedTime * -0.0005;
+      gltf.scene.rotation.y += elapsedTime * -0.0003;
     }
 
     window.requestAnimationFrame(animate);
