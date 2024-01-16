@@ -37,6 +37,7 @@ export function initializeThreeJS() {
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.25;
+  controls.enableZoom = false;
 
   const loader = new GLTFLoader();
 
@@ -46,6 +47,8 @@ export function initializeThreeJS() {
       gltf.scene.traverse(function (child) {
         if (child.isMesh) {
           child.material.needsUpdate = true;
+
+          child.position.y += 4;
         }
       });
       scene.add(gltf.scene);
