@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-let scene, camera, renderer, controls;
+let scene, camera, renderer, controls, gltf;
 
 export function initializeThreeJS() {
   scene = new THREE.Scene();
@@ -14,7 +14,7 @@ export function initializeThreeJS() {
     1000
   );
   camera.position.z = 5;
-  camera.position.y = 5;
+  camera.position.y = 7;
 
   scene.add(camera);
 
@@ -44,12 +44,13 @@ export function initializeThreeJS() {
 
   loader.load(
     '/models/rose/rose-new.glb',
-    function (gltf) {
+    function (loadedGltf) {
+      gltf = loadedGltf;
       gltf.scene.traverse(function (child) {
         if (child.isMesh) {
           child.material.needsUpdate = true;
 
-          child.position.set = (0, 8, 5);
+          // gltf.scene.position.y = 6;
         }
       });
       scene.add(gltf.scene);
@@ -59,12 +60,21 @@ export function initializeThreeJS() {
       console.error(error);
     }
   );
+  let rotationSpeed = 0.005;
 
-  document.getElementById('model-container').appendChild(renderer.domElement);
+  const modelContainer = document.getElementById('model-container');
+
+  if (modelContainer) {
+    modelContainer.appendChild(renderer.domElement);
+  } else {
+    console.error('Elemento "model-container" não encontrado.');
+  }
 
   function animate() {
     requestAnimationFrame(animate);
-
+    if (gltf && gltf.scene) {
+      gltf.scene.rotation.y += rotationSpeed;
+    }
     controls.update();
 
     renderer.render(scene, camera);
