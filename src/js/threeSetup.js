@@ -5,20 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 let scene, camera, renderer, controls;
 
 export function initializeThreeJS() {
-  console.log('🚀 ~ initializeThreeJS ~ initializeThreeJS:', initializeThreeJS);
   scene = new THREE.Scene();
-  console.log('🚀 ~ initializeThreeJS ~ scene:', scene);
-
-  //Mesh
-
-  const geometry = new THREE.BoxGeometry(0, 0, 0);
-  console.log('🚀 ~ initializeThreeJS ~ geometry:', geometry);
-  const material = new THREE.MeshBasicMaterial();
-  console.log('🚀 ~ initializeThreeJS ~ material:', material);
-  const mesh = new THREE.Mesh(geometry, material);
-  console.log('🚀 ~ initializeThreeJS ~ mesh:', mesh);
-
-  scene.add(mesh);
 
   camera = new THREE.PerspectiveCamera(
     75,
@@ -30,7 +17,7 @@ export function initializeThreeJS() {
 
   scene.add(camera);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1);
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(0, 0, 1);
   light.castShadow = true;
@@ -51,38 +38,31 @@ export function initializeThreeJS() {
   controls.enableDamping = true;
   controls.dampingFactor = 0.25;
 
-  const loaderHeart = new GLTFLoader();
+  const textureLoader = new THREE.TextureLoader();
 
-  loaderHeart.load(
-    '/models/heart.glb',
+  const diffuseTexture = textureLoader.load(
+    '/models/rose/textures/Red_rose_diffuse.jpeg'
+  );
+  const normalTexture = textureLoader.load(
+    'models/rose/textures/Red_rose_normal.png'
+  );
+  const occlusionTexture = textureLoader.load(
+    '/pamodels/rose/textures/Red_rose_occlusion.png'
+  );
+
+  const loader = new GLTFLoader();
+
+  loader.load(
+    '/models/rose/rose-new.glb',
     function (gltf) {
-      for (let i = 0; i < 6; i++) {
-        const heart = gltf.scene.clone();
+      gltf.scene.traverse(function (child) {
+        if (child.isMesh) {
+          child.material.needsUpdate = true;
 
-        heart.position.set(
-          (Math.random() - 0.5) * 5,
-          (Math.random() - 0.5) * 5,
-          (Math.random() - 0.5) * 5
-        );
-
-        heart.rotation.set(
-          Math.random() * Math.PI,
-          Math.random() * Math.PI,
-          Math.random() * Math.PI
-        );
-        const heartMaterial = new THREE.MeshPhongMaterial({ color: 0xff69b4 });
-        const scale = Math.random() * 0.5 + 0.5;
-        heart.scale.set(scale, scale, scale);
-
-        heart.traverse(function (node) {
-          if (node.isMesh) {
-            node.material = heartMaterial;
-            node.castShadow = true;
-          }
-        });
-
-        scene.add(heart);
-      }
+          console.log(child);
+        }
+      });
+      scene.add(gltf.scene);
     },
     undefined,
     function (error) {
@@ -101,19 +81,15 @@ export function initializeThreeJS() {
     raycaster.setFromCamera(mouse, camera);
 
     const intersects = raycaster.intersectObjects(scene.children, true);
-    console.log('🚀 ~ onMouseMove ~ intersects:', intersects);
 
     if (intersects.length > 0) {
       renderer.domElement.style.pointerEvents = 'auto';
-      console.log('coracao achou');
     } else {
       renderer.domElement.style.pointerEvents = 'none';
-      console.log('coracao nao tem');
     }
   }
 
   document.getElementById('model-container').appendChild(renderer.domElement);
-  console.log('🚀 terminou', renderer);
   window.addEventListener('mousemove', onMouseMove);
 
   function animate() {
