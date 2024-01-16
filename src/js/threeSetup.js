@@ -49,8 +49,6 @@ export function initializeThreeJS() {
       gltf.scene.traverse(function (child) {
         if (child.isMesh) {
           child.material.needsUpdate = true;
-
-          // gltf.scene.position.y = 6;
         }
       });
       scene.add(gltf.scene);
@@ -69,16 +67,19 @@ export function initializeThreeJS() {
   } else {
     console.error('Elemento "model-container" não encontrado.');
   }
+  const clock = new THREE.Clock();
 
-  function animate() {
-    requestAnimationFrame(animate);
-    if (gltf && gltf.scene) {
-      gltf.scene.rotation.y += rotationSpeed;
-    }
-    controls.update();
+  const animate = () => {
+    const elapsedTime = clock.getElapsedTime();
 
     renderer.render(scene, camera);
-  }
+
+    if (gltf && gltf.scene) {
+      gltf.scene.rotation.y += elapsedTime * -0.001;
+    }
+
+    window.requestAnimationFrame(animate);
+  };
 
   animate();
 }
